@@ -1,8 +1,11 @@
 import wollok.game.*
-import pepita.*
+import froggi.*
 
 program juego {
+	game.width(20)
+	game.height(10)
 	game.title("Juego Base")
-	game.addVisual(pepita)
+	game.addVisualCharacter(froggi)
+	keyboard.c().onPressDo({ froggi.actualizarEstado() })
 	game.start()
 }
