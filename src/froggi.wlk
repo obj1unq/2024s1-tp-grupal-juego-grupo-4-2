@@ -5,7 +5,7 @@ object froggi {
 	var property estado = chiquito
 
 	method image(){
-		return estado.activar()
+		return "froggi-" + estado.tamanio() + ".png"
 	}
 	
 	method actualizarEstado(){
@@ -16,8 +16,8 @@ object froggi {
 
 object chiquito{
 	
-	method activar(){
-		return "froggi-chiquito.png"
+	method tamanio(){
+		return "chiquito"
 	}
 	
 	method siguienteEstado(){
@@ -28,8 +28,8 @@ object chiquito{
 
 object grande{
 	
-	method activar(){
-		return "froggi-grande.png"
+	method tamanio(){
+		return "grande"
 	}
 	
 	method siguienteEstado(){
