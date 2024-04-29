@@ -1,8 +1,7 @@
 import wollok.game.*
 
 class Banana{
-	
-	var property tamanio = 
+
 	
 	method image(){
 		return "banana.png"
