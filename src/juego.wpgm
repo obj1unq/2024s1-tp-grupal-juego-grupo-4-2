@@ -4,6 +4,7 @@ import froggi.*
 program juego {
 	game.width(20)
 	game.height(10)
+	game.boardGround("calles.png")
 	game.title("Juego Base")
 	game.addVisualCharacter(froggi)
 	keyboard.c().onPressDo({ froggi.actualizarEstado() })
