@@ -1,5 +1,6 @@
 import wollok.game.*
 import froggi.*
+import Frutas.*
 
 program juego {
 	game.width(20)
@@ -8,5 +9,8 @@ program juego {
 	game.title("Juego Base")
 	game.addVisualCharacter(froggi)
 	keyboard.c().onPressDo({ froggi.actualizarEstado() })
+	game.onTick(3000, "CREAR COMIDA", { 
+		manzanaFactory.crearComida()
+		})
 	game.start()
 }
