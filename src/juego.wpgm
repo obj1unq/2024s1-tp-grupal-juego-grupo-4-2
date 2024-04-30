@@ -11,6 +11,9 @@ program juego {
 	keyboard.c().onPressDo({ froggi.actualizarEstado() })
 	game.onTick(3000, "CREAR FRUTA", { 
 		frutasManager.crearFruta()
+	game.onCollideDo(froggi,{objeto => objeto.colision(froggi) })
+	game.onTick(3000, "CREAR COMIDA", { 
+		manzanaFactory.crearComida()
 		})
 	game.start()
 }

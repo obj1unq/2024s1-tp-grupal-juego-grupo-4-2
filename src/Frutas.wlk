@@ -22,7 +22,6 @@ class Banana{
 }
 
 class Uva{
-	
 	var property position = randomizer.emptyPosition()
 	const property puntosQueAporta = 200
 	
@@ -50,7 +49,7 @@ class Manzana{
 		objeto.agregarPuntos(puntosQueAporta)
 		game.removeVisual(self)
 	}
-	
+
 }
 
 object uvaFactory {
@@ -70,10 +69,10 @@ object bananaFactory {
 		game.addVisual(banana)
 		return banana
 	}
-	
 }
 
 object manzanaFactory {
+
 
 	method crearFruta() {
 		const manzana = new Manzana()
@@ -93,4 +92,11 @@ object frutasManager{
 		}
 	}
 	
+}
+	method crearComida() {
+		const manzana = new Manzana()
+		game.addVisual(manzana)
+		
+	}
+
 }
