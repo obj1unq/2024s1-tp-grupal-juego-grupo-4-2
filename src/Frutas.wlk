@@ -93,10 +93,3 @@ object frutasManager{
 	}
 	
 }
-	method crearComida() {
-		const manzana = new Manzana()
-		game.addVisual(manzana)
-		
-	}
-
-}
