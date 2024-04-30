@@ -8,5 +8,6 @@ program juego {
 	game.title("Juego Base")
 	game.addVisualCharacter(froggi)
 	keyboard.c().onPressDo({ froggi.actualizarEstado() })
+	
 	game.start()
 }
