@@ -1,21 +1,26 @@
 import wollok.game.*
 import froggi.*
+import randomizer.*
 
-object mosquito {
+class Mosquito {
+
+	var property position = randomizer.emptyPosition()
 
 	method image() {
 		return "mosquito.png"
 	}
 
 	method colision(objeto) {
-		objeto.validarEstado(grande)
+		objeto.validarEstado()
 		objeto.actualizarEstado()
 		objeto.agregarVida(1)
 		game.removeVisual(self)
 	}
 }
 
-object mosca {
+class Mosca {
+
+	var property position = randomizer.emptyPosition()
 
 	method image() {
 		return "mosca.png"
@@ -24,5 +29,35 @@ object mosca {
 	method colision(objeto) {
 		objeto.agregarVida(2)
 		game.removeVisual(self)
+	}
+	
+}
+
+object insectoManager {
+	
+	const property comidas = []
+
+	method crearInsecto() {
+		if (comidas.size() < 5) {
+			comidas.add([ mosquitoFactory, moscaFactory ].anyOne().crearInsecto())
+		}
+	}
+}
+
+object mosquitoFactory {
+
+	method crearInsecto() {
+		const mosquito = new Mosquito()
+		game.addVisual(mosquito)
+		return mosquito
+	}	
+}
+
+object moscaFactory {
+
+	method crearInsecto() {
+		const mosca = new Mosca()
+		game.addVisual(mosca)	
+		return mosca
 	}
 }
