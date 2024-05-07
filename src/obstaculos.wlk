@@ -12,7 +12,7 @@ object auto {
 	}
 	
 	method mover(){
-		return game.onTick(1000, "avanzar", {self.position()})
+		return game.onTick(1000, "avanzar", {self.position(position.right(1))})
 	}
 }
 
