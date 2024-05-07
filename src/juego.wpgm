@@ -1,5 +1,7 @@
 import wollok.game.*
 import froggi.*
+import Frutas.*
+import insectos.*
 
 program juego {
 	game.width(20)
@@ -8,5 +10,8 @@ program juego {
 	game.title("Juego Base")
 	game.addVisualCharacter(froggi)
 	keyboard.c().onPressDo({ froggi.actualizarEstado() })
+	game.onCollideDo(froggi,{objeto => objeto.colision(froggi)})
+	game.onTick(3000, "CREAR FRUTA", {frutasManager.crearFruta()})
+	game.onTick(5000, "CREAR INSECTO", {insectoManager.crearInsecto()})
 	game.start()
 }
