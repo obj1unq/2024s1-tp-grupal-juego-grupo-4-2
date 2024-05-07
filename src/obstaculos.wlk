@@ -16,7 +16,6 @@ object auto {
 	}
 }
 
-//object spawn {
-//	var property altura 
-//	var posicion = game.at(altura,0)
-//}
+object spawn {
+	
+}
