@@ -4,24 +4,20 @@ import Frutas.*
 import insectos.*
 import obstaculos.*
 
-//object water{
-//	var property position = game.at(0, 0)
-//	var property image = "water1.gif"
-//}
-
 program juego {
 	game.width(11)
 	game.height(13)
 	game.boardGround("calles.png")
 	game.title("Juego Base")
 	game.addVisualCharacter(froggi)
-	
 //	keyboard.c().onPressDo({ froggi.actualizarEstado() })
 //	game.onCollideDo(froggi,{objeto => objeto.colision(froggi)})
 //	game.onTick(3000, "CREAR FRUTA", {frutasManager.crearFruta()})
 //	game.onTick(5000, "CREAR INSECTO", {insectoManager.crearInsecto()})
-	//var autoNuevo = new Obstaculo(image = "auto1.ping", cantidadDeDanio = 1, velocidad = 1000)
-	game.onTick(1000, "SPAWNER DE AUTOS", {spawner.inicializarEnPosicionRandom(new Obstaculo(nombreDeObstaculo = "auto", cantidadDeDanio = 1, velocidad = 1000))})
-//	spawner.inicializarEnPosicionRandom(new Obstaculo(nombreDeObstaculo = "auto", cantidadDeDanio = 1, velocidad = 1000))
+
+	//OBSTACULOS EN LA CALLE
+	game.onTick(1000, "SPAWNER DE AUTOS", { spawnerDeObstaculos.inicializarObstaculoEnPosicion(new Obstaculo(nombreDeObstaculo = "auto3", cantidadDeDanio = 1, velocidad = 200), game.at(0, 3)) })
+	game.onTick(2000, "SPAWNER DE AUTOS", { spawnerDeObstaculos.inicializarObstaculoEnPosicion(new Obstaculo(nombreDeObstaculo = "auto2", cantidadDeDanio = 1, velocidad = 600), game.at(game.width() - 1, 2)) })
+	game.onTick(3000, "SPAWNER DE AUTOS", { spawnerDeObstaculos.inicializarObstaculoEnPosicion(new Obstaculo(nombreDeObstaculo = "auto1", cantidadDeDanio = 1, velocidad = 400), game.at(0, 1)) })
 	game.start()
 }

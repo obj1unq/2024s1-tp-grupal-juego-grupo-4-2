@@ -13,7 +13,7 @@ class Obstaculo {
 
 	method image() {
 //		return self.cambiarTipo(nombreDeObstaculo)  //No funciona como se espera
-		return nombreDeObstaculo + "1.png"
+		return nombreDeObstaculo + ".png"
 	}
 
 	method mover() {
@@ -34,48 +34,24 @@ class Obstaculo {
 
 }
 
-//object auto {
-//
-//	var property position = null
-//	var property image = "auto1.png"
-//
-//	method colision(objeto) {
-//		objeto.quitarVida()
-//	}
-//
-//	method mover() {
-//		if (self.estoyEnElBordeDelTablero(game.at(0, position.y()))) {
-//			return game.onTick(1000, "avanzar", { self.position(position.right(1)) })
-//		} else {
-//			return game.onTick(1000, "avanzar", { self.position(position.left(1)) })
-//		}
-//	}
-//
-//	method cambiarTipoDeAuto() {
-//		// Son distintos png del auto
-//		image = "auto" + 1.randomUpTo(3).toString() + ".png"
-//	}
-//
-//	method estoyEnElBordeDelTablero(borde) {
-//		return self.position().distance(borde) == 0
-//	}
-//
-//}
-object spawner {
+object spawnerDeObstaculos {
 
-	method inicializarEnPosicionRandom(obstaculo) {
-		self.izquierdaODerechaDelTablero()
-		obstaculo.position(self.izquierdaODerechaDelTablero())
+	method inicializarObstaculoEnPosicion(obstaculo, position) {
+		obstaculo.position(position)
 		game.addVisual(obstaculo)
 		obstaculo.mover()
 	}
 
-	method izquierdaODerechaDelTablero() {
+	method positionDentroDeCalle() {
 		if (0.randomUpTo(10) > 5) {
-			return game.at(game.width() - 1, 0.randomUpTo(game.height() - 1))
+			return game.at(game.width() - 1, self.rangoDeAlto())
 		} else {
-			return game.at(0, 0.randomUpTo(game.height() - 1))
+			return game.at(0, self.rangoDeAlto())
 		}
+	}
+	
+	method rangoDeAlto(){
+		return 0.randomUpTo(5).roundUp()
 	}
 
 }
