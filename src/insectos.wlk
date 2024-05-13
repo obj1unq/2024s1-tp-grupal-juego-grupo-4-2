@@ -15,6 +15,7 @@ class Mosquito {
 		objeto.actualizarEstado()
 		objeto.agregarVida(1)
 		game.removeVisual(self)
+		insectoManager.insectos().remove(self)
 	}
 }
 
@@ -27,19 +28,20 @@ class Mosca {
 	}
 
 	method colision(objeto) {
-		objeto.agregarVida(2)
+		objeto.agregarVida(1)
 		game.removeVisual(self)
+		insectoManager.insectos().remove(self)
 	}
 	
 }
 
 object insectoManager {
 	
-	const property comidas = []
+	const property insectos = []
 
 	method crearInsecto() {
-		if (comidas.size() < 5) {
-			comidas.add([ mosquitoFactory, moscaFactory ].anyOne().crearInsecto())
+		if (insectos.size() < 5) {
+			insectos.add([ mosquitoFactory, moscaFactory ].anyOne().crearInsecto())
 		}
 	}
 }

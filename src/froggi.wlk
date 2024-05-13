@@ -3,7 +3,7 @@ import wollok.game.*
 object froggi {
 	var property position = game.at(0,0)
 	var property estado = chiquito
-	var vida = 1
+	var property vida = 2
 	var puntos = 0
 
 	method image(){
@@ -14,8 +14,8 @@ object froggi {
 		estado = estado.siguienteEstado()
 	}
 	
-	method quitarVida(){
-		vida -= 1
+	method quitarVida(cantidadDeDanio){
+		vida -= cantidadDeDanio
 	}
 	
 	method agregarVida(cantidad){
@@ -23,9 +23,9 @@ object froggi {
 	}
 	
 	
-	method colision(){
-		game.onCollideDo(self, { otroObjeto => otroObjeto.colision(self) })
-	}
+//	method colision(){
+//		game.onCollideDo(self, { otroObjeto => otroObjeto.colision(self) })
+//	}
 	
 	method agregarPuntos(cantidad){
 		puntos += cantidad
