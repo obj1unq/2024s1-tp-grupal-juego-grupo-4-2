@@ -7,14 +7,12 @@ class Banana{
 	
 	var property position = randomizer.emptyPosition()
 	const property puntosQueAporta = 300
-	const property vidaExtra = 1
 	
 	method image(){
 		return "banana.png"
 	}
 	
 	method colision(objeto){
-		objeto.agregarVida(vidaExtra)
 		objeto.agregarPuntos(puntosQueAporta)
 		game.removeVisual(self)
 		frutasManager.frutas().remove(self)
