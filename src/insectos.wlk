@@ -11,7 +11,8 @@ class Mosquito {
 	}
 
 	method colision(objeto) {
-		objeto.validarEstado()
+			
+		objeto.validarCrecimiento()
 		objeto.actualizarEstado()
 		objeto.agregarVida(1)
 		game.removeVisual(self)
