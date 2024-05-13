@@ -17,6 +17,7 @@ class Banana{
 		objeto.agregarVida(vidaExtra)
 		objeto.agregarPuntos(puntosQueAporta)
 		game.removeVisual(self)
+		frutasManager.frutas().remove(self)
 	}
 	
 }
@@ -33,6 +34,7 @@ class Uva{
 	method colision(objeto){
 		objeto.agregarPuntos(puntosQueAporta)
 		game.removeVisual(self)
+		frutasManager.frutas().remove(self)
 	}	
 }
 
@@ -48,6 +50,7 @@ class Manzana{
 	method colision(objeto){
 		objeto.agregarPuntos(puntosQueAporta)
 		game.removeVisual(self)
+		frutasManager.frutas().remove(self)
 	}
 
 }

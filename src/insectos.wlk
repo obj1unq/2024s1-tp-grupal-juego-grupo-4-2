@@ -15,6 +15,7 @@ class Mosquito {
 		objeto.actualizarEstado()
 		objeto.agregarVida(1)
 		game.removeVisual(self)
+		insectoManager.insectos().remove(self)
 	}
 }
 
@@ -27,8 +28,9 @@ class Mosca {
 	}
 
 	method colision(objeto) {
-		objeto.agregarVida(2)
+		objeto.agregarVida(1)
 		game.removeVisual(self)
+		insectoManager.insectos().remove(self)
 	}
 	
 }
