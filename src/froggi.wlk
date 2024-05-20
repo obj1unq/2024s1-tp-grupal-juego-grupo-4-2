@@ -1,4 +1,8 @@
 import wollok.game.*
+import obstaculos.*
+import consumibles.*
+import ui.*
+import randomizer.*
 
 class Froggi {
     var property position = game.at(0,0)
@@ -6,6 +10,10 @@ class Froggi {
     var property vida = 3
     var puntos = 0
 
+	method puntos(){
+		return puntos	
+	}
+	
     method image(){
         return "froggi-" + estado.image() + ".png"
     }
@@ -20,7 +28,7 @@ class Froggi {
 
     method quitarVida(cantidadDeDanio){
         vida -= cantidadDeDanio
-        console.println(self.vida()) // DESPUES BORRAR, SOLO DE PRUEBA
+       // console.println(self.vida()) // DESPUES BORRAR, SOLO DE PRUEBA
         self.estoyMuerto()
     }
 

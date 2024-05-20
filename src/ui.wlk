@@ -2,20 +2,23 @@ import wollok.game.*
 import froggi.*
 
 object puntosUI {
-
 	var property position = game.at(10, 12)
-	var personajeConPuntos
+	var puntosDe
 
+//	method image(){
+//		return ""
+//	}
+//	
 	method text() {
-		return self.actualizarPuntos()
+		return "" + self.puntosDe()
 	}
 
-	method actualizarPuntos() {
-		return personajeConPuntos.puntos().toString()
+	method puntosDe() {
+		return puntosDe.puntos()
 	}
 
-	method personajeActual(personajeDado) {
-		personajeConPuntos = personajeDado
+	method puntosDe(_puntosDe) {
+		puntosDe = _puntosDe
 	}
 
 }

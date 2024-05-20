@@ -14,7 +14,7 @@ program juego {
 	game.addVisualCharacter(froggi)
 	game.onCollideDo(froggi, { objeto => objeto.colision(froggi) })
 		// Marco
-	puntosUI.personajeActual(froggi)
+	puntosUI.puntosDe(froggi)
 	game.addVisual(puntosUI)
 		// ITEMS
 	game.onTick(3000, "CREAR FRUTA", { consumiblesManager.crearFruta() })
