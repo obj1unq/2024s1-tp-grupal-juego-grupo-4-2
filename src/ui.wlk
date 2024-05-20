@@ -5,12 +5,12 @@ object puntosUI {
 	var property position = game.at(10, 12)
 	var puntosDe
 
-//	method image(){
-//		return ""
-//	}
-//	
 	method text() {
 		return "" + self.puntosDe()
+	}
+	
+	method textColor() {
+		return "0D0EC6FF"
 	}
 
 	method puntosDe() {
@@ -22,4 +22,27 @@ object puntosUI {
 	}
 
 }
+
+object vidasUI {
+	var property position = game.at(0, 12)
+	var vidasDe
+
+	method text() {
+		return "" + self.vidasDe()
+	}
+	
+	method textColor() {
+		return "E70E0EFF"
+	}
+
+	method vidasDe() {
+		return vidasDe.vida()
+	}
+
+	method vidasDe(_vidasDe) {
+		vidasDe = _vidasDe
+	}
+
+}
+
 

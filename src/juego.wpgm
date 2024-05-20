@@ -16,6 +16,8 @@ program juego {
 		// Marco
 	puntosUI.puntosDe(froggi)
 	game.addVisual(puntosUI)
+	vidasUI.vidasDe(froggi)
+	game.addVisual(vidasUI)
 		// ITEMS
 	game.onTick(3000, "CREAR FRUTA", { consumiblesManager.crearFruta() })
 	game.onTick(5000, "CREAR INSECTO", { consumiblesManager.crearInsecto() })
