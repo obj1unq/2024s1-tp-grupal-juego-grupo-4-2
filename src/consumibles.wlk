@@ -96,20 +96,24 @@ object consumiblesManager {
 
 	method crearInsecto() {
 		if (insectos.size() < 5) {
-			insectos.add([ self.creador(new Mosquito()), self.creador(new Mosca()) ].anyOne())
+			const insecto = [(new Mosquito()), (new Mosca()) ].anyOne()
+			self.agregarConsumible(insecto , insectos)
+			//console.println(insectos)
 		}
 	}
 	
 	method crearFruta() {
 		if (frutas.size() < 9) {
-			frutas.add([ self.creador(new Manzana()), self.creador(new Uva()) , self.creador(new Banana()) ].anyOne())
+			const fruta = [(new Manzana()), (new Uva()) ,(new Banana()) ].anyOne()
+			self.agregarConsumible(fruta , frutas)
+			console.println(frutas)
+			//frutas.add([self.creador((new Manzana())), self.creador((new Uva())) , (new Banana())].anyOne())
 		}
 	}
 	
-	method creador(objeto){
-		const uva = objeto
-		game.addVisual(uva)
-		return uva
+	method agregarConsumible(consumible , listaConsumible){
+		listaConsumible.add(consumible)
+		game.addVisual(consumible)
 	}
 	
 }

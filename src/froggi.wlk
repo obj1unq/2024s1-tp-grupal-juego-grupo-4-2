@@ -2,7 +2,7 @@ import wollok.game.*
 
 class Froggi {
 	var property position = game.at(0,0)
-	var property estado = grande
+	var property estado = chiquito
 	var property vida = 3
 	var puntos = 0
 
