@@ -43,11 +43,8 @@ object spawnerDeObstaculos {
 	}
 
 	method positionDentroDeCalle() {
-		if (0.randomUpTo(10) > 5) {
-			return game.at(game.width() - 1, self.rangoDeAlto())
-		} else {
-			return game.at(0, self.rangoDeAlto())
-		}
+		const x = [game.width() - 1, 0].anyOne()
+		return game.at(x, self.rangoDeAlto())
 	}
 	
 	method rangoDeAlto(){

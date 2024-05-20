@@ -2,7 +2,7 @@ import wollok.game.*
 import froggi.*
 import randomizer.*
 
-class Consumibles{
+class Consumible{
 
     var property position = randomizer.emptyPosition()
 
@@ -16,7 +16,7 @@ class Consumibles{
     }
 }
 
-class Frutas inherits Consumibles{
+class Fruta inherits Consumible{
 
     override method colision(objeto){
         super(objeto)
@@ -24,7 +24,7 @@ class Frutas inherits Consumibles{
     }
 }
 
-class Banana inherits Frutas{
+class Banana inherits Fruta{
 
     method image(){
         return "banana.png"
@@ -36,7 +36,7 @@ class Banana inherits Frutas{
 
 }
 
-class Uva inherits Frutas{
+class Uva inherits Fruta{
 
     method image(){
         return "uva.png"
@@ -47,7 +47,7 @@ class Uva inherits Frutas{
     }
 }
 
-class Manzana inherits Frutas{
+class Manzana inherits Fruta{
 
     method image(){
         return "manzana-roja.png"
@@ -59,7 +59,7 @@ class Manzana inherits Frutas{
 
 }
 
-class Insecto inherits Consumibles{
+class Insecto inherits Consumible{
 
     override method colision(objeto) {
         objeto.agregarVida(1)
@@ -91,7 +91,7 @@ object consumiblesManager {
 
     method crearInsecto() {
         if (insectos.size() < 5) {
-            const insecto = [(new Mosquito()), (new Mosca()) ].anyOne()
+            const insecto = [{new Mosquito()}, {new Mosca()} ].anyOne().apply()
             self.agregarConsumible(insecto , insectos)
             //console.println(insectos)
         }
@@ -99,7 +99,7 @@ object consumiblesManager {
 
     method crearFruta() {
         if (frutas.size() < 9) {
-            const fruta = [(new Manzana()), (new Uva()) ,(new Banana()) ].anyOne()
+            const fruta = [{(new Manzana())}, {(new Uva())} ,{(new Banana())} ].anyOne().apply()
             self.agregarConsumible(fruta , frutas)
             console.println(frutas)
             //frutas.add([self.creador((new Manzana())), self.creador((new Uva())) , (new Banana())].anyOne())
