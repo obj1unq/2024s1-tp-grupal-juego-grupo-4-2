@@ -1,9 +1,13 @@
 import froggi.*
 
-
-test "froggi cambia estado a grande" {
+describe "personaje"{
+	//PERSONAJE
+	const froggi = new Froggi()
+	
+	test "froggi cambia estado a grande" {
 
 	assert.equals(froggi.estado() , chiquito)
 	froggi.actualizarEstado()
 	assert.equals(froggi.estado() , grande)
+	}
 }
