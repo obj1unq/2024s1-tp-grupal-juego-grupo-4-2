@@ -28,6 +28,10 @@ class Froggi {
 		puntos += cantidad
 	}
 	
+	method puntos(){
+		return puntos
+	}
+	
 	method validarCrecimiento(){
 		estado.validarCrecimiento()
 	}
