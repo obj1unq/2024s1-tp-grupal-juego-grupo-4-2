@@ -7,8 +7,12 @@ import randomizer.*
 class Froggi {
     var property position = game.at(0,0)
     var property estado = vivo
-    var property vida = 3
+    var vida = 3
     var puntos = 0
+
+	method vida() {
+		return vida
+	}
 
 	method puntos(){
 		return puntos	
