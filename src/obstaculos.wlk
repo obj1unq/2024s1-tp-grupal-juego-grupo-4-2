@@ -36,19 +36,28 @@ class Obstaculo {
 
 object spawnerDeObstaculos {
 
-	method inicializarObstaculoEnPosicion(obstaculo, position) {
+	const property autos = []
+
+	method inicializarEn(obstaculo, position) {
 		obstaculo.position(position)
 		game.addVisual(obstaculo)
 		obstaculo.mover()
+		autos.add(obstaculo)
 	}
 
-	method positionDentroDeCalle() {
-		const x = [game.width() - 1, 0].anyOne()
-		return game.at(x, self.rangoDeAlto())
+	method init() {
+		game.onTick(1000, "SPAWNER DE AUTO3", { self.inicializarEn(new Obstaculo(nombreDeObstaculo = "auto3", cantidadDeDanio = 1, velocidad = 200), game.at(0, 3))})
+		game.onTick(2000, "SPAWNER DE AUTO2", { self.inicializarEn(new Obstaculo(nombreDeObstaculo = "auto2", cantidadDeDanio = 1, velocidad = 600), game.at(game.width() - 1, 2))})
+		game.onTick(3000, "SPAWNER DE AUTO1", { self.inicializarEn(new Obstaculo(nombreDeObstaculo = "auto1", cantidadDeDanio = 1, velocidad = 400), game.at(0, 1))})
 	}
-	
-	method rangoDeAlto(){
-		return 0.randomUpTo(5).roundUp()
+
+	method quitarAutos() {
+		// Quita todos los autos que este en pantalla y para los onTick
+		game.removeTickEvent("SPAWNER DE AUTO3")
+		game.removeTickEvent("SPAWNER DE AUTO2")
+		game.removeTickEvent("SPAWNER DE AUTO1")
+		autos.forEach{ auto => game.removeVisual(auto)}
+		autos.clear()
 	}
 
 }

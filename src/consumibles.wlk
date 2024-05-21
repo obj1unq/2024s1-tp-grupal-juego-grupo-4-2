@@ -1,6 +1,7 @@
 import wollok.game.*
 import froggi.*
 import randomizer.*
+import obstaculos.*
 
 class Consumible {
 
@@ -8,15 +9,15 @@ class Consumible {
 
 	method colision(objeto) {
 		objeto.agregarPuntos(self.puntosQueAporta())
-		self.aplicarComportamiento()
 		game.removeVisual(self)
+		self.aplicarComportamiento(objeto)
 	}
 
 	method puntosQueAporta() {
 		return 0
 	}
 
-	method aplicarComportamiento() {
+	method aplicarComportamiento(personaje) {
 	}
 
 }
@@ -76,14 +77,15 @@ class Insecto inherits Consumible {
 
 }
 
-class Mosquito inherits Insecto {
+class Mosquito inherits Insecto {		//Solo se crea 1 en la escena actual
 
 	method image() {
 		return "mosquito.png"
 	}
 
-	override method aplicarComportamiento() {
-	// Te teletransporta a la próxima safe zone 
+	override method aplicarComportamiento(personaje) {
+		//Te teletransporta a la próxima safe zone
+		personaje.position(game.center())
 	}
 
 }
@@ -94,8 +96,9 @@ class Mosca inherits Insecto {
 		return "mosca.png"
 	}
 
-	override method aplicarComportamiento() {
-	// Borra todos los objetos y empieza de nuevo el spawner de vehículos 
+	override method aplicarComportamiento(personaje) {
+		spawnerDeObstaculos.quitarAutos()
+		spawnerDeObstaculos.init()
 	}
 
 }
@@ -117,7 +120,7 @@ object consumiblesManager {
 		if (frutas.size() < 9) {
 			const fruta = [ {(new Manzana())}, {(new Uva())}, {(new Banana())} ].anyOne().apply()
 			self.agregarConsumible(fruta, frutas)
-			console.println(frutas)
+			//console.println(frutas)
 		// frutas.add([self.creador((new Manzana())), self.creador((new Uva())) , (new Banana())].anyOne())
 		}
 	}

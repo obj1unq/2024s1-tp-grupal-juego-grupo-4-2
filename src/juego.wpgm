@@ -9,7 +9,7 @@ program juego {
 	game.height(13)
 	game.boardGround("calles.png")
 	game.title("Juego Base")
-		// PERSONAJE
+//		 PERSONAJE
 	const froggi = new Froggi()
 	game.addVisualCharacter(froggi)
 	game.onCollideDo(froggi, { objeto => objeto.colision(froggi) })
@@ -22,8 +22,11 @@ program juego {
 	game.onTick(3000, "CREAR FRUTA", { consumiblesManager.crearFruta() })
 	game.onTick(5000, "CREAR INSECTO", { consumiblesManager.crearInsecto() })
 		// OBSTACULOS EN LA CALLE
-	game.onTick(1000, "SPAWNER DE AUTO1", { spawnerDeObstaculos.inicializarObstaculoEnPosicion(new Obstaculo(nombreDeObstaculo = "auto3", cantidadDeDanio = 1, velocidad = 200), game.at(0, 3)) })
-	game.onTick(2000, "SPAWNER DE AUTO2", { spawnerDeObstaculos.inicializarObstaculoEnPosicion(new Obstaculo(nombreDeObstaculo = "auto2", cantidadDeDanio = 1, velocidad = 600), game.at(game.width() - 1, 2)) })
-	game.onTick(3000, "SPAWNER DE AUTO3", { spawnerDeObstaculos.inicializarObstaculoEnPosicion(new Obstaculo(nombreDeObstaculo = "auto1", cantidadDeDanio = 1, velocidad = 400), game.at(0, 1)) })
+	game.onTick(1000, "SPAWNER DE AUTO3", { spawnerDeObstaculos.inicializarEn(new Obstaculo(nombreDeObstaculo = "auto3", cantidadDeDanio = 1, velocidad = 200), game.at(0, 3)) })
+	game.onTick(2000, "SPAWNER DE AUTO2", { spawnerDeObstaculos.inicializarEn(new Obstaculo(nombreDeObstaculo = "auto2", cantidadDeDanio = 1, velocidad = 600), game.at(game.width() - 1, 2)) })
+	game.onTick(3000, "SPAWNER DE AUTO1", { spawnerDeObstaculos.inicializarEn(new Obstaculo(nombreDeObstaculo = "auto1", cantidadDeDanio = 1, velocidad = 400), game.at(0, 1)) })
+
 	game.start()
 }
+
+
