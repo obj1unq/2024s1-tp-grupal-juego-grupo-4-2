@@ -90,6 +90,12 @@ object spawnerDeVehiculos {
 //		return camion
 	}
 	
+	method camionRapidoFactory(){
+		const camion = new Camion (velocidad = 500,  position= game.at(0, 4) , camiones = ["camion-verde.png" , "camion-rojo.png"].anyOne())
+		self.inicializarVehiculo(camion)
+//		return camion
+	}
+	
 	method inicializarVehiculo(vehiculo) {
 		game.addVisual(vehiculo)
 		vehiculo.mover()
@@ -100,6 +106,7 @@ object spawnerDeVehiculos {
 		game.onTick(3000, "SPAWNER DE AUTO", { self.autoFactory()})
 		game.onTick(6000, "SPAWNER DE MOTO", { self.motoFactory()})
 		game.onTick(8000, "SPAWNER DE CAMION", { self.camionFactory()})
+		game.onTick(5000, "SPAWNER DE CAMION", { self.camionRapidoFactory()})
 }
 //
 	method quitarAutos() {
