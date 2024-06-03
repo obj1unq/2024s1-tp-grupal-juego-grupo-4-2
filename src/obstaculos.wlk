@@ -31,12 +31,12 @@ class Vehiculo {
 
 class Camion inherits Vehiculo{
 	
-	const camiones = #{"camion-verde.png" , "camion-rojo.png"}
+	const camiones 
 	
 	const property damage = 3
 	
 	override method image(){
-		return camiones.anyOne()
+		return camiones
 	}
 	
 	override method colision(personaje){
@@ -59,10 +59,10 @@ class Moto inherits Vehiculo{
 class Auto inherits Vehiculo{
 	
 	const property damage = 2
-	const property autos = #{"auto1.png" , "auto3.png"}
+	const property autos 
 	
 	override method image(){
-		return autos.anyOne()
+		return autos
 	}
 	
 }
@@ -73,7 +73,7 @@ object spawnerDeVehiculos {
 	const property vehiculos = []
 
 	method autoFactory(){
-		const auto = new Auto( velocidad = 600 ,position= game.at(0, 3))
+		const auto = new Auto( velocidad = 600 ,position= game.at(0, 3)  , autos = ["auto1.png" , "auto3.png"].anyOne())
 		self.inicializarVehiculo(auto)
 //		return auto
 	}
@@ -85,7 +85,7 @@ object spawnerDeVehiculos {
 	}
 	
 	method camionFactory(){
-		const camion = new Camion (velocidad = 900,  position= game.at(0, 1))
+		const camion = new Camion (velocidad = 900,  position= game.at(0, 1) , camiones = ["camion-verde.png" , "camion-rojo.png"].anyOne())
 		self.inicializarVehiculo(camion)
 //		return camion
 	}
