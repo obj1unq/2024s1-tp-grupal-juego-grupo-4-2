@@ -2,7 +2,7 @@ import wollok.game.*
 
 class Vehiculo {
 
-	var property position = null
+	var property position 
 	var property velocidad
 
 	method colision(personaje) {
@@ -68,36 +68,48 @@ class Auto inherits Vehiculo{
 }
 
 
-object spawnerDeObstaculos {
+object spawnerDeVehiculos {
 
-	const property autos = []
+	const property vehiculos = []
 
-	method spawner(){
-		
+	method autoFactory(){
+		const auto = new Auto( velocidad = 600 ,position= game.at(0, 3))
+		self.inicializarVehiculo(auto)
+//		return auto
 	}
-
-
-	method inicializarEn(obstaculo, position) {
-		obstaculo.position(position)
-		game.addVisual(obstaculo)
-		obstaculo.mover()
-		autos.add(obstaculo)
+	
+	method motoFactory(){
+		const moto = new Moto (velocidad = 300,  position= game.at(game.width() - 1, 2))
+		self.inicializarVehiculo(moto)
+//		return moto
 	}
-
-//	method init() {
-//		game.onTick(1000, "SPAWNER DE AUTO3", { self.inicializarEn(new Moto( velocidad = 200), game.at(0, 3))})
-//		game.onTick(2000, "SPAWNER DE AUTO2", { self.inicializarEn(new Auto( velocidad = 600), game.at(game.width() - 1, 2))})
-//		game.onTick(3000, "SPAWNER DE AUTO1", { self.inicializarEn(new Camion( velocidad = 400), game.at(0, 1))})
-//	}
+	
+	method camionFactory(){
+		const camion = new Camion (velocidad = 900,  position= game.at(0, 1))
+		self.inicializarVehiculo(camion)
+//		return camion
+	}
+	
+	method inicializarVehiculo(vehiculo) {
+		game.addVisual(vehiculo)
+		vehiculo.mover()
+		vehiculos.add(vehiculo)
+	}
+	
+	method init() {
+		game.onTick(3000, "SPAWNER DE AUTO", { self.autoFactory()})
+		game.onTick(6000, "SPAWNER DE MOTO", { self.motoFactory()})
+		game.onTick(8000, "SPAWNER DE CAMION", { self.camionFactory()})
+}
 //
-//	method quitarAutos() {
-//		// Quita todos los autos que este en pantalla y para los onTick
-//		game.removeTickEvent("SPAWNER DE AUTO3")
-//		game.removeTickEvent("SPAWNER DE AUTO2")
-//		game.removeTickEvent("SPAWNER DE AUTO1")
-//		autos.forEach{ auto => game.removeVisual(auto)}
-//		autos.clear()
-//	}
+	method quitarAutos() {
+		// Quita todos los autos que este en pantalla y para los onTick
+		game.removeTickEvent("SPAWNER DE AUTO")
+		game.removeTickEvent("SPAWNER DE MOTO")
+		game.removeTickEvent("SPAWNER DE CAMION")
+		vehiculos.forEach{ auto => game.removeVisual(auto)}
+		vehiculos.clear()
+	}
 
 }
 

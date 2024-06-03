@@ -97,8 +97,8 @@ class Mosca inherits Insecto {
 	}
 
 	override method aplicarComportamiento(personaje) {
-		spawnerDeObstaculos.quitarAutos()
-		spawnerDeObstaculos.init()
+		spawnerDeVehiculos.quitarAutos()
+		spawnerDeVehiculos.init()
 	}
 
 }

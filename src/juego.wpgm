@@ -22,10 +22,9 @@ program juego {
 	game.onTick(3000, "CREAR FRUTA", { consumiblesManager.crearFruta() })
 	game.onTick(5000, "CREAR INSECTO", { consumiblesManager.crearInsecto() })
 		// OBSTACULOS EN LA CALLE
-	game.onTick(3000, "SPAWNER DE AUTO3", { spawnerDeObstaculos.inicializarEn(new Camion(velocidad = 500), game.at(0, 3)) })
-	game.onTick(2000, "SPAWNER DE AUTO2", { spawnerDeObstaculos.inicializarEn(new Moto(velocidad = 600), game.at(game.width() - 1, 2)) })
-	game.onTick(3000, "SPAWNER DE AUTO1", { spawnerDeObstaculos.inicializarEn(new Auto(velocidad = 400), game.at(0, 1)) })
-
+	spawnerDeVehiculos.init()
+	
+	
 	game.start()
 }
 
