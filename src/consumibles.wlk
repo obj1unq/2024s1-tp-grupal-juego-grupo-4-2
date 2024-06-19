@@ -85,7 +85,7 @@ class Mosquito inherits Insecto {		//Solo se crea 1 en la escena actual
 
 	override method aplicarComportamiento(personaje) {
 		//Te teletransporta a la próxima safe zone
-		personaje.position(game.center())
+		personaje.position(game.at(5 , 5))
 	}
 
 }
@@ -97,8 +97,8 @@ class Mosca inherits Insecto {
 	}
 
 	override method aplicarComportamiento(personaje) {
-		spawnerDeObstaculos.quitarAutos()
-		spawnerDeObstaculos.init()
+		spawnerDeObstaculo.quitarAutos()
+		spawnerDeObstaculo.init()
 	}
 
 }
