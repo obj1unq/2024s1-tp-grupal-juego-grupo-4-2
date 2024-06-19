@@ -2,7 +2,7 @@ import wollok.game.*
 import froggi.*
 
 object puntosUI {
-	var property position = game.at(9, 12)
+	var property position = game.at(18, 12)
 	var puntosDe
 
 	method text() {
