@@ -3,6 +3,7 @@ import froggi.*
 import obstaculos.*
 import consumibles.*
 import ui.*
+import objetosDeVictoria.*
 
 program juego {
 	game.width(11)
@@ -10,7 +11,7 @@ program juego {
 	game.boardGround("calles.png")
 	game.title("Juego Base")
 //		 PERSONAJE
-	const froggi = new Froggi()
+	//const froggi = new Froggi()
 	game.addVisualCharacter(froggi)
 	game.onCollideDo(froggi, { objeto => objeto.colision(froggi) })
 		// Marco
@@ -25,7 +26,13 @@ program juego {
 	game.onTick(1000, "SPAWNER DE AUTO3", { spawnerDeObstaculos.inicializarEn(new Obstaculo(nombreDeObstaculo = "auto3", cantidadDeDanio = 1, velocidad = 200), game.at(0, 3)) })
 	game.onTick(2000, "SPAWNER DE AUTO2", { spawnerDeObstaculos.inicializarEn(new Obstaculo(nombreDeObstaculo = "auto2", cantidadDeDanio = 1, velocidad = 600), game.at(game.width() - 1, 2)) })
 	game.onTick(3000, "SPAWNER DE AUTO1", { spawnerDeObstaculos.inicializarEn(new Obstaculo(nombreDeObstaculo = "auto1", cantidadDeDanio = 1, velocidad = 400), game.at(0, 1)) })
-
+	
+	
+	//Creacion de nenufar
+	game.addVisual(new Nenufar(position = game.at(4, game.height() - 1)))
+	game.addVisual(new Nenufar(position = game.at(5, game.height() - 1)))
+	game.addVisual(new Nenufar(position = game.at(6, game.height() - 1)))
+	
 	game.start()
 }
 
