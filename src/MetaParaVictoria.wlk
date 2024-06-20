@@ -10,15 +10,21 @@ class Nenufar {
 	}
 
 	method colision(objeto) {
-		self.ganarJuego(objeto)
+		self.actualizarVictoria(objeto)
 		meTocaron = true
 	}
 
-	method ganarJuego(jugador) {
-		if (not meTocaron) {
+	method actualizarVictoria(jugador) {
+		if (jugador.cantidadDeVecesGanadas() < 2) {		//Al tercero debo indicar que el jugador gano
 			jugador.position(game.at(0, 0))
-			//jugador.aumentarVecesGanadas()
+			jugador.aumentarVecesGanadas()
+		}else{
+			self.ganarJuego()
 		}
+	}
+	
+	method ganarJuego(){
+		game.say(self, "Felicidades, ganaste")
 	}
 
 	method imagenSegunEstado() {

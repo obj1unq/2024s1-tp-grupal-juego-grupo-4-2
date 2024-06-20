@@ -3,7 +3,7 @@ import froggi.*
 import obstaculos.*
 import consumibles.*
 import ui.*
-import objetosDeVictoria.*
+import MetaParaVictoria.*
 
 program juego {
 	game.width(11)
