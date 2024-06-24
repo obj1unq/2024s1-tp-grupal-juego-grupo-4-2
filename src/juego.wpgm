@@ -25,9 +25,9 @@ program juego {
 
 	spawnerDeObstaculo.init()
 
-	game.addVisual(new Nenufar(position = game.at(game.width()/2 - 1, game.height() - 1)))
+	game.addVisual(new Nenufar(position = game.at(game.width()/2 - 4, game.height() - 1)))
 	game.addVisual(new Nenufar(position = game.at(game.width()/2, game.height() - 1)))
-	game.addVisual(new Nenufar(position = game.at(game.width()/2 + 1, game.height() - 1)))
+	game.addVisual(new Nenufar(position = game.at(game.width()/2 + 4, game.height() - 1)))
 	
 
 
