@@ -11,7 +11,7 @@ program juego {
 	game.boardGround("calles.png")
 	game.title("Juego Base")
 //		 PERSONAJE
-	//const froggi = new Froggi()
+	const froggi = new Froggi()
 	game.addVisualCharacter(froggi)
 	game.onCollideDo(froggi, { objeto => objeto.colision(froggi) })
 		// Marco

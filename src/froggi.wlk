@@ -4,7 +4,7 @@ import consumibles.*
 import ui.*
 import randomizer.*
 
-object froggi {
+class Froggi {
     var property position = game.at(0,0)
     var property estado = vivo
     var vida = 3
