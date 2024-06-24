@@ -6,9 +6,9 @@ import ui.*
 import MetaParaVictoria.*
 
 program juego {
-	game.width(11)
+	game.width(20)
 	game.height(13)
-	game.boardGround("calles.png")
+	game.boardGround("superficie.png")
 	game.title("Juego Base")
 //		 PERSONAJE
 	const froggi = new Froggi()
@@ -23,6 +23,7 @@ program juego {
 	game.onTick(3000, "CREAR FRUTA", { consumiblesManager.crearFruta() })
 	game.onTick(5000, "CREAR INSECTO", { consumiblesManager.crearInsecto() })
 		// OBSTACULOS EN LA CALLE
+
 	game.onTick(1000, "SPAWNER DE AUTO3", { spawnerDeObstaculos.inicializarEn(new Obstaculo(nombreDeObstaculo = "auto3", cantidadDeDanio = 1, velocidad = 200), game.at(0, 3)) })
 	game.onTick(2000, "SPAWNER DE AUTO2", { spawnerDeObstaculos.inicializarEn(new Obstaculo(nombreDeObstaculo = "auto2", cantidadDeDanio = 1, velocidad = 600), game.at(game.width() - 1, 2)) })
 	game.onTick(3000, "SPAWNER DE AUTO1", { spawnerDeObstaculos.inicializarEn(new Obstaculo(nombreDeObstaculo = "auto1", cantidadDeDanio = 1, velocidad = 400), game.at(0, 1)) })
@@ -33,6 +34,9 @@ program juego {
 	game.addVisual(new Nenufar(position = game.at(5, game.height() - 1)))
 	game.addVisual(new Nenufar(position = game.at(6, game.height() - 1)))
 	
+
+	spawnerDeObstaculo.init()
+
 	game.start()
 }
 

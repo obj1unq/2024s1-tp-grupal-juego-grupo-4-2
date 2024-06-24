@@ -2,11 +2,11 @@ import wollok.game.*
 import froggi.*
 
 object puntosUI {
-	var property position = game.at(10, 12)
+	var property position = game.at(18, 12)
 	var puntosDe
 
 	method text() {
-		return "" + self.puntosDe()
+		return "Puntos Totales " + self.puntosDe()
 	}
 	
 	method textColor() {
@@ -32,7 +32,7 @@ object vidasUI {
 	var vidasDe
 
 	method text() {
-		return "" + self.vidasDe()
+		return "Vidas " + self.vidasDe()
 	}
 	
 	method textColor() {

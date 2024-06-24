@@ -7,7 +7,7 @@ import randomizer.*
 class Froggi {
     var property position = game.at(0,0)
     var property estado = vivo
-    var vida = 3
+    var vida = 7
     var puntos = 0
     var cantidadDeVecesGanadas = 0
 
@@ -35,8 +35,8 @@ class Froggi {
 //        estado.validarCrecimiento()
 //    }
 
-    method quitarVida(cantidadDeDanio){
-        vida -= cantidadDeDanio
+    method quitarVida(cantidad){
+        vida -= cantidad
        // console.println(self.vida()) // DESPUES BORRAR, SOLO DE PRUEBA
         self.estoyMuerto()
     }
