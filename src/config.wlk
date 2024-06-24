@@ -6,6 +6,7 @@ import consumibles.*
 
 const pantallaInicio = new Pantallas (position = game.origin(), image = "pantalla_inicio.png")
 const pantallaMuerte = new Pantallas (position = game.origin(), image = "pantalla_muerte.png")
+const pantallaControles = new Pantallas (position = game.at(5, 2), image = "pantalla_controles.png")
 
 class Pantallas {
 	var property position
@@ -18,12 +19,16 @@ object configuracionPantallas {
 	method configurarInicio() {
 		// Funcionalidad del enter para iniciar el juego
 		keyboard.enter().onPressDo{if (not juegoEnMarcha) {self.configurarJuego()}}
+		keyboard.t().onPressDo{if (not juegoEnMarcha and not game.hasVisual(pantallaControles)) {game.addVisual(pantallaControles)} 
+								else {game.removeVisual(pantallaControles)}
+		}
 	}
 	
 	method cargarPantallaInicio(){
 		game.boardGround("superficie.png")
 		game.addVisual(pantallaInicio)	
 	}
+
 	
 	method configurarJuego(){
 		// Quita la pantalla de inicio e inicia el juego con su configuracion
@@ -43,8 +48,8 @@ object configuracionPantallas {
 		game.addVisual(pantallaMuerte)
 		juegoEnMarcha = false
 		keyboard.r().onPressDo{if (not juegoEnMarcha) {self.configurarJuego()}}
-		
 	}
+	
 }
 
 object configuracionJuego {
