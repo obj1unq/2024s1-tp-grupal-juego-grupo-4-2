@@ -22,13 +22,14 @@ program juego {
 	game.onTick(3000, "CREAR FRUTA", { consumiblesManager.crearFruta() })
 	game.onTick(5000, "CREAR INSECTO", { consumiblesManager.crearInsecto() })
 		// OBSTACULOS EN LA CALLE
-	//Creacion de nenufar
-	game.addVisual(new Nenufar(position = game.at(4, game.height() - 1)))
-	game.addVisual(new Nenufar(position = game.at(5, game.height() - 1)))
-	game.addVisual(new Nenufar(position = game.at(6, game.height() - 1)))
-	
 
 	spawnerDeObstaculo.init()
+
+	game.addVisual(new Nenufar(position = game.at(game.width()/2 - 1, game.height() - 1)))
+	game.addVisual(new Nenufar(position = game.at(game.width()/2, game.height() - 1)))
+	game.addVisual(new Nenufar(position = game.at(game.width()/2 + 1, game.height() - 1)))
+	
+
 
 	game.addVisualCharacter(froggi)
 	game.onCollideDo(froggi, { objeto => objeto.colision(froggi) })
