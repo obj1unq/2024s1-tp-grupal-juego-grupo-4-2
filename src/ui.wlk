@@ -6,7 +6,7 @@ object puntosUI {
 	var puntosDe
 
 	method text() {
-		return "Puntos Totales " + self.puntosDe()
+		return "PUNTOS TOTALES: " + self.puntosDe() + "   "
 	}
 	
 	method textColor() {
@@ -17,9 +17,11 @@ object puntosUI {
 		return puntosDe.puntos()
 	}
 
-	method puntosDe(_puntosDe) {
-		puntosDe = _puntosDe
+	method puntosDe(personaje) {
+		puntosDe = personaje
 	}
+	
+	method colision(objeto){}
 
 }
 
@@ -28,7 +30,7 @@ object vidasUI {
 	var vidasDe
 
 	method text() {
-		return "Vidas " + self.vidasDe()
+		return "   VIDAS: " + self.vidasDe()
 	}
 	
 	method textColor() {
@@ -39,10 +41,11 @@ object vidasUI {
 		return vidasDe.vida()
 	}
 
-	method vidasDe(_vidasDe) {
-		vidasDe = _vidasDe
+	method vidasDe(personaje) {
+		vidasDe = personaje
 	}
 
+	method colision(objeto){}
 }
 
 

@@ -3,20 +3,13 @@ import obstaculos.*
 import consumibles.*
 import ui.*
 import randomizer.*
+import config.*
 
 class Froggi {
-    var property position = game.at(0,0)
+    var property position = game.origin()
     var property estado = vivo
-    var vida = 7
-    var puntos = 0
-
-	method vida() {
-		return vida
-	}
-
-	method puntos(){
-		return puntos	
-	}
+    var property vida = 7
+    var property puntos = 0
 	
     method image(){
         return "froggi-" + estado.image() + ".png"
@@ -44,17 +37,19 @@ class Froggi {
         puntos += cantidad
     }
 
-
+	method quitarPuntos(cantidad){
+        puntos -= cantidad
+    }
 
     method estoyMuerto() {
         if (self.vida() <= 0) {self.terminarJuego()}
     }
 
     method terminarJuego() {
-        self.estado(muerto)
-        game.clear()
-        game.addVisual(self)
-        game.say(self, "Estoy muerto, presiona R para reintentar")
+        self.position(game.origin())
+        self.vida(7)
+        self.puntos(0)
+        configuracionPantallas.pantallaMuerte()
     }
 }
 

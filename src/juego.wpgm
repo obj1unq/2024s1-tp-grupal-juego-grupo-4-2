@@ -3,29 +3,17 @@ import froggi.*
 import obstaculos.*
 import consumibles.*
 import ui.*
+import config.*
 
 program juego {
+	
 	game.width(20)
 	game.height(13)
-	game.boardGround("superficie.png")
-	game.title("Juego Base")
-//		 PERSONAJE
-	const froggi = new Froggi()
-	game.addVisualCharacter(froggi)
-	game.onCollideDo(froggi, { objeto => objeto.colision(froggi) })
-		// Marco
-	puntosUI.puntosDe(froggi)
-	game.addVisual(puntosUI)
-	vidasUI.vidasDe(froggi)
-	game.addVisual(vidasUI)
-		// ITEMS
-	game.onTick(3000, "CREAR FRUTA", { consumiblesManager.crearFruta() })
-	game.onTick(5000, "CREAR INSECTO", { consumiblesManager.crearInsecto() })
-		// OBSTACULOS EN LA CALLE
-	spawnerDeObstaculo.init()
-	
-	
+	game.title("Froggy (Wollok Edition)")
+	configuracionPantallas.configurarInicio()
+	configuracionPantallas.cargarPantallaInicio()
 	game.start()
+	// ERROR MOSCA DESPUES DE REINICIAR
 }
 
 
