@@ -9,6 +9,7 @@ class Froggi {
     var property estado = vivo
     var vida = 7
     var puntos = 0
+    var cantidadDeVecesGanadas = 0
 
 	method vida() {
 		return vida
@@ -20,6 +21,10 @@ class Froggi {
 	
     method image(){
         return "froggi-" + estado.image() + ".png"
+    }
+    
+    method cantidadDeVecesGanadas(){
+    	return cantidadDeVecesGanadas
     }
 
 //    method actualizarEstado(){
@@ -55,6 +60,10 @@ class Froggi {
         game.clear()
         game.addVisual(self)
         game.say(self, "Estoy muerto, presiona R para reintentar")
+    }
+    
+    method aumentarVecesGanadas(){
+    	cantidadDeVecesGanadas += 1
     }
 }
 

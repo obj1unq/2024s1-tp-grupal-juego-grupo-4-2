@@ -20,6 +20,10 @@ object puntosUI {
 	method puntosDe(_puntosDe) {
 		puntosDe = _puntosDe
 	}
+	
+	method colision(personaje){
+		
+	}
 
 }
 
@@ -41,6 +45,10 @@ object vidasUI {
 
 	method vidasDe(_vidasDe) {
 		vidasDe = _vidasDe
+	}
+	
+	method colision(personaje){
+		
 	}
 
 }
