@@ -5,11 +5,22 @@ import ui.*
 import randomizer.*
 
 class Froggi {
-    var property position = game.at(0,0)
+	
     var property estado = vivo
     var vida = 7
     var puntos = 0
     var cantidadDeVecesGanadas = 0
+    var property movimiento = new Libre(position = game.at(0 , 0))
+
+	
+	method position(_position){
+		movimiento.position(_position)
+	}
+	
+	method position(){
+		return movimiento.position()
+	}
+	
 
 	method vida() {
 		return vida
@@ -66,6 +77,35 @@ class Froggi {
     	cantidadDeVecesGanadas += 1
     }
 }
+
+class SobreTronco{
+	
+	var property transporte
+	var property personaje
+
+	method position(){
+		return transporte.position()
+	}
+	
+	method position(_position){
+		personaje.movimiento(new Libre(position = _position))
+	}		
+	
+	
+	
+}
+
+class Libre{
+	
+	var property position
+	
+	
+	
+}
+
+
+
+
 
 object vivo{
 
