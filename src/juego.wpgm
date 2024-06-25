@@ -31,7 +31,14 @@ program juego {
 	
 
 
-	game.addVisualCharacter(froggi)
+	game.addVisual(froggi)
+	
+	keyboard.up().onPressDo { froggi.moverArriba() }
+	keyboard.down().onPressDo { froggi.moverAbajo() }
+	keyboard.left().onPressDo { froggi.moverIzquierda() }
+	keyboard.right().onPressDo { froggi.moverDerecha() }
+	
+//	froggi.accionesDeMovimiento()
 	game.onCollideDo(froggi, { objeto => objeto.colision(froggi) })
 	game.start()
 }
