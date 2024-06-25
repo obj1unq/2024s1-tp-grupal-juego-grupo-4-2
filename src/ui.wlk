@@ -21,7 +21,9 @@ object puntosUI {
 		puntosDe = personaje
 	}
 	
-	method colision(objeto){}
+	method colision(personaje){
+		
+	}
 
 }
 
@@ -44,8 +46,11 @@ object vidasUI {
 	method vidasDe(personaje) {
 		vidasDe = personaje
 	}
+	
+	method colision(personaje){
+		
+	}
 
-	method colision(objeto){}
 }
 
 

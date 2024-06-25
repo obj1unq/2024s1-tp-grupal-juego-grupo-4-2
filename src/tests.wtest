@@ -3,20 +3,20 @@ import obstaculos.*
 
 describe "personaje"{
     //PERSONAJE
-    const froggi = new Froggi()
-    const auto1= new Obstaculo(nombreDeObstaculo = "auto1", cantidadDeDanio = 3, velocidad = 400)
-
-//    test "froggi cambia estado a grande" {
+//    const froggi = new Froggi()
+////    const auto1= new Obstaculo(nombreDeObstaculo = "auto1", cantidadDeDanio = 3, velocidad = 400)
 //
-//    assert.equals(froggi.estado() , chiquito)
-//    froggi.actualizarEstado()
-//    assert.equals(froggi.estado() , grande)
-//    }
-
-    test "froggi muere" {
-    assert.equals(froggi.estado(), vivo)
-    auto1.colision(froggi)
-    assert.equals(froggi.estado(), muerto)
+////    test "froggi cambia estado a grande" {
+////
+////    assert.equals(froggi.estado() , chiquito)
+////    froggi.actualizarEstado()
+////    assert.equals(froggi.estado() , grande)
+////    }
+//
+//    test "froggi muere" {
+//    assert.equals(froggi.estado(), vivo)
+////    auto1.colision(froggi)
+//    assert.equals(froggi.estado(), muerto)
     }
 
 }

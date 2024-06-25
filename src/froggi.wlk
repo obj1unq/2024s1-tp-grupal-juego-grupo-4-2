@@ -10,95 +10,131 @@ class Froggi {
     var property estado = vivo
     var property vida = 7
     var property puntos = 0
-	
-    method image(){
-        return "froggi-" + estado.image() + ".png"
-    }
+	  var cantidadDeVecesGanadas = 0
+	  var property movimiento = new Libre(position = game.at(0, 0))
 
-//    method actualizarEstado(){
-//        estado = estado.siguienteEstado()
-//    }
+	method position(_position) {
+		movimiento.position(_position)
+	}
 
-//    method validarCrecimiento(){
-//        estado.validarCrecimiento()
-//    }
+	method position() {
+		return movimiento.position()
+	}
 
-    method quitarVida(cantidad){
-        vida -= cantidad
-       // console.println(self.vida()) // DESPUES BORRAR, SOLO DE PRUEBA
-        self.estoyMuerto()
-    }
+	method image() {
+		return "froggi-" + estado.image() + ".png"
+	}
 
-    method agregarVida(cantidad){
-        vida += cantidad
-    }
+	method cantidadDeVecesGanadas() {
+		return cantidadDeVecesGanadas
+	}
 
-    method agregarPuntos(cantidad){
-        puntos += cantidad
-    }
+	method quitarVida(cantidad) {
+		vida -= cantidad
+			// console.println(self.vida()) // DESPUES BORRAR, SOLO DE PRUEBA
+		self.estoyMuerto()
+	}
+
+	method agregarVida(cantidad) {
+		vida += cantidad
+	}
+
+	method agregarPuntos(cantidad) {
+		puntos += cantidad
+	}
 
 	method quitarPuntos(cantidad){
         puntos -= cantidad
     }
 
-    method estoyMuerto() {
-        if (self.vida() <= 0) {self.terminarJuego()}
-    }
+	method estoyMuerto() {
+		if (self.vida() <= 0) {
+			self.terminarJuego()
+		}
+	}
 
-    method terminarJuego() {
+	method aumentarVecesGanadas() {
+		cantidadDeVecesGanadas += 1
+	}
+
+	method moverArriba() {
+		self.position(self.position().up(1))
+		self.estoySobreElAgua()
+	}
+
+	method moverAbajo() {
+		self.position(self.position().down(1))
+		self.estoySobreElAgua()
+	}
+
+	method moverIzquierda() {
+		self.position(self.position().left(1))
+		self.estoySobreElAgua()
+	}
+
+	method moverDerecha() {
+		self.position(self.position().right(1))
+		self.estoySobreElAgua()
+	}
+	
+	method estoySobreElAgua(){
+		if(game.colliders(self).isEmpty() and self.position().y() > 6 ){
+			self.quitarVida(1)
+			self.position(game.origin())
+		}
+	}
+
+   method terminarJuego() {
         self.position(game.origin())
         self.vida(7)
         self.puntos(0)
         configuracionPantallas.pantallaMuerte()
     }
-}
-
-object vivo{
-
-    method image(){
-        return "vivo"
-    }
-
-//    method siguienteEstado(){
-//        return grande
-//    }
-//
-//    method validarCrecimiento() {
-//
-//    }
 
 }
 
-//object grande{
-//
-//    method image(){
-//        return "grande"
-//    }
-//
-//    method siguienteEstado(){
-//        return chiquito
-//    }
-//
-//    method validarCrecimiento() {
-////        console.println("llamada a validar con error")
-////        self.error("No puedo volver a hacerme grande")
-//    }
-//
-//}
+class SobreTronco {
+
+	var property transporte
+	var property personaje
+
+	method position() {
+		return transporte.position()
+	}
+
+	method position(_position) {
+		personaje.movimiento(new Libre(position = _position))
+	}
+	
+	method estoySobreTronco(){
+		return true
+	}
+
+}
+
+class Libre {
+
+	var property position
+	
+	method estoySobreTronco(){
+		return false
+	}
+
+}
+
+object vivo {
+
+	method image() {
+		return "vivo"
+	}
+
+}
 
 object muerto {
 
-    method image(){
-        return "muerto"
-    }
-
-//    method siguienteEstado(){
-//
-//    }
-//
-//    method validarCrecimiento() {
-////        console.println("llamada a validar con error")
-////        self.error("No puedo volver a hacerme grande")
-//    }
+	method image() {
+		return "muerto"
+	}
 
 }
+
