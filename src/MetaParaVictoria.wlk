@@ -10,13 +10,18 @@ class Nenufar {
 	}
 
 	method colision(objeto) {
-		self.actualizarVictoria(objeto)
-		meTocaron = true
+		if(meTocaron){
+			objeto.quitarVida(1)
+			objeto.position(game.origin())
+		}else{
+			self.actualizarVictoria(objeto)
+			meTocaron = true
+		}
 	}
 
 	method actualizarVictoria(jugador) {
 		if (jugador.cantidadDeVecesGanadas() < 2) {		//Al tercero debo indicar que el jugador gano
-			jugador.position(game.at(0, 0))
+			jugador.position(game.origin())
 			jugador.aumentarVecesGanadas()
 		}else{
 			self.ganarJuego()

@@ -18,5 +18,3 @@ describe "personaje"{
 ////    auto1.colision(froggi)
 //    assert.equals(froggi.estado(), muerto)
     }
-
-}
