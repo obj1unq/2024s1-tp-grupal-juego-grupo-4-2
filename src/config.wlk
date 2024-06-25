@@ -3,6 +3,7 @@ import froggi.*
 import ui.*
 import obstaculos.*
 import consumibles.*
+import MetaParaVictoria.*
 
 const pantallaInicio = new Pantallas (position = game.origin(), image = "pantalla_inicio.png")
 const pantallaMuerte = new Pantallas (position = game.origin(), image = "pantalla_muerte.png")
@@ -40,6 +41,10 @@ object configuracionPantallas {
 		configuracionJuego.agregarItems()
 		// OBSTACULOS EN LA CALLE
 		spawnerDeObstaculo.init()
+		game.addVisual(new Nenufar(position = game.at(game.width()/2 - 4, game.height() - 1)))
+		game.addVisual(new Nenufar(position = game.at(game.width()/2, game.height() - 1)))
+		game.addVisual(new Nenufar(position = game.at(game.width()/2 + 4, game.height() - 1)))
+		// agrupar los nenufares en un init
 	}
 	
 	method pantallaMuerte() {
@@ -56,7 +61,12 @@ object configuracionJuego {
 	const froggi = new Froggi()
 	
 	method agregarFroggi() {
-		game.addVisualCharacter(froggi)
+		game.addVisual(froggi)
+		spawnerDeObstaculo.personaje(froggi)
+		keyboard.up().onPressDo { froggi.moverArriba() }
+		keyboard.down().onPressDo { froggi.moverAbajo() }
+		keyboard.left().onPressDo { froggi.moverIzquierda() }
+		keyboard.right().onPressDo { froggi.moverDerecha() }
 		game.onCollideDo(froggi, { objeto => objeto.colision(froggi) })
 	}
 

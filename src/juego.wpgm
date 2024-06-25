@@ -10,32 +10,9 @@ program juego {
 	
 	game.width(20)
 	game.height(13)
-
 	game.title("Froggy (Wollok Edition)")
 	configuracionPantallas.configurarInicio()
 	configuracionPantallas.cargarPantallaInicio()
-
-//		 PERSONAJE
-	const froggi = new Froggi()
-	spawnerDeObstaculo.personaje(froggi)
-		// OBSTACULOS EN LA CALLE
-
-	game.addVisual(new Nenufar(position = game.at(game.width()/2 - 4, game.height() - 1)))
-	game.addVisual(new Nenufar(position = game.at(game.width()/2, game.height() - 1)))
-	game.addVisual(new Nenufar(position = game.at(game.width()/2 + 4, game.height() - 1)))
-	
-
-
-	game.addVisual(froggi)
-	
-	keyboard.up().onPressDo { froggi.moverArriba() }
-	keyboard.down().onPressDo { froggi.moverAbajo() }
-	keyboard.left().onPressDo { froggi.moverIzquierda() }
-	keyboard.right().onPressDo { froggi.moverDerecha() }
-	
-//	froggi.accionesDeMovimiento()
-	game.onCollideDo(froggi, { objeto => objeto.colision(froggi) })
-
 	game.start()
 	// ERROR MOSCA DESPUES DE REINICIAR
 }
