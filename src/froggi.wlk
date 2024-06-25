@@ -88,7 +88,7 @@ class Froggi {
 	}
 	
 	method estoySobreElAgua(){
-		if(!movimiento.estoySobreTronco() and self.position().y() > 6 ){
+		if(game.colliders(self).isEmpty() and self.position().y() > 6 ){
 			self.quitarVida(1)
 			self.position(game.origin())
 		}

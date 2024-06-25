@@ -199,11 +199,13 @@ method autoFactory(){
 		game.onTick(2500, "SPAWNER DE MOTO", { self.motoFactory()})
 		game.onTick(7000, "SPAWNER DE CAMION", { self.camionFactory()})
 		game.onTick(5000, "SPAWNER DE CAMION RAPIDO", { self.camionRapidoFactory()})
-		game.onTick(3500, "SPAWNER DE TRONCO1", { self.troncoFactory(1)})
-		game.onTick(4000, "SPAWNER DE TRONCO2", { self.troncoFactory(2)})
-		game.onTick(6000, "SPAWNER DE TRONCO3", { self.troncoFactory(3)})
-		game.onTick(4500, "SPAWNER DE TRONCO4", { self.troncoFactory(4)})
-		game.onTick(5500, "SPAWNER DE TRONCO5", { self.troncoFactory(5)})
+		(1..5).forEach({index => game.onTick(3500 + index * 500, "SPAWNER DE TRONCO" + index, { self.troncoFactory(index)})})
+		
+//		game.onTick(3500, "SPAWNER DE TRONCO1", { self.troncoFactory(1)})
+//		game.onTick(4000, "SPAWNER DE TRONCO2", { self.troncoFactory(2)})
+//		game.onTick(6000, "SPAWNER DE TRONCO3", { self.troncoFactory(3)})
+//		game.onTick(4500, "SPAWNER DE TRONCO4", { self.troncoFactory(4)})
+//		game.onTick(5500, "SPAWNER DE TRONCO5", { self.troncoFactory(5)})
 }
 //
 	method quitarAutos() {
@@ -212,11 +214,12 @@ method autoFactory(){
 		game.removeTickEvent("SPAWNER DE MOTO")
 		game.removeTickEvent("SPAWNER DE CAMION")
 		game.removeTickEvent("SPAWNER DE CAMION RAPIDO")
-		game.removeTickEvent("SPAWNER DE TRONCO1")
-		game.removeTickEvent("SPAWNER DE TRONCO2")
-		game.removeTickEvent("SPAWNER DE TRONCO3")
-		game.removeTickEvent("SPAWNER DE TRONCO4")
-		game.removeTickEvent("SPAWNER DE TRONCO5")
+		(1..5).forEach({index => game.removeTickEvent("SPAWNER DE TRONCO" + index)})
+//		game.removeTickEvent("SPAWNER DE TRONCO1")
+//		game.removeTickEvent("SPAWNER DE TRONCO2")
+//		game.removeTickEvent("SPAWNER DE TRONCO3")
+//		game.removeTickEvent("SPAWNER DE TRONCO4")
+//		game.removeTickEvent("SPAWNER DE TRONCO5")
 		vehiculos.forEach{ auto => auto.detenerMovimiento()}
 	}
 	
