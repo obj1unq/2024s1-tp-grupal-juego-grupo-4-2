@@ -3,27 +3,22 @@ import froggi.*
 import obstaculos.*
 import consumibles.*
 import ui.*
+import config.*
 import MetaParaVictoria.*
 
 program juego {
+	
 	game.width(20)
 	game.height(13)
-	game.boardGround("superficie.png")
-	game.title("Juego Base")
+
+	game.title("Froggy (Wollok Edition)")
+	configuracionPantallas.configurarInicio()
+	configuracionPantallas.cargarPantallaInicio()
+
 //		 PERSONAJE
 	const froggi = new Froggi()
 	spawnerDeObstaculo.personaje(froggi)
-		// Marco
-	puntosUI.puntosDe(froggi)
-	game.addVisual(puntosUI)
-	vidasUI.vidasDe(froggi)
-	game.addVisual(vidasUI)
-		// ITEMS
-	game.onTick(3000, "CREAR FRUTA", { consumiblesManager.crearFruta() })
-	game.onTick(5000, "CREAR INSECTO", { consumiblesManager.crearInsecto() })
 		// OBSTACULOS EN LA CALLE
-
-	spawnerDeObstaculo.init()
 
 	game.addVisual(new Nenufar(position = game.at(game.width()/2 - 4, game.height() - 1)))
 	game.addVisual(new Nenufar(position = game.at(game.width()/2, game.height() - 1)))
@@ -40,7 +35,9 @@ program juego {
 	
 //	froggi.accionesDeMovimiento()
 	game.onCollideDo(froggi, { objeto => objeto.colision(froggi) })
+
 	game.start()
+	// ERROR MOSCA DESPUES DE REINICIAR
 }
 
 
