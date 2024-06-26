@@ -1,4 +1,5 @@
 import wollok.game.*
+import config.*
 
 class Nenufar {
 
@@ -19,12 +20,8 @@ class Nenufar {
 			game.addVisualIn(new RanaGanadora(), self.position())
 			game.removeVisual(self)
 		}else{
-			self.ganarJuego()
+			configuracionJuego.terminarJuego(pantallaVictoria)
 		}
-	}
-	
-	method ganarJuego(){
-		game.say(self, "Felicidades, ganaste")
 	}
 
 }
@@ -39,4 +36,3 @@ class RanaGanadora{
 		objeto.position(game.origin())
 	}
 }
-
