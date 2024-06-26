@@ -15,7 +15,7 @@ class Nenufar {
 
 	method actualizarVictoria(jugador) {
 		if (jugador.cantidadDeVecesGanadas() < 2) {		//Al tercero debo indicar que el jugador gano
-			jugador.position(game.origin())
+			jugador.position(game.at(9 , 0))
 			jugador.aumentarVecesGanadas()
 			game.addVisualIn(new RanaGanadora(), self.position())
 			game.removeVisual(self)
@@ -33,6 +33,6 @@ class RanaGanadora{
 	
 	method colision(objeto) {
 		objeto.quitarVida(1)
-		objeto.position(game.origin())
+		objeto.position(game.at(9 , 0))
 	}
 }

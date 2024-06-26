@@ -63,10 +63,10 @@ object configuracionJuego {
 	method agregarFroggi() {
 		game.addVisual(froggi)
 		spawnerDeObstaculo.personaje(froggi)
-		keyboard.up().onPressDo { froggi.moverArriba() }
-		keyboard.down().onPressDo { froggi.moverAbajo() }
-		keyboard.left().onPressDo { froggi.moverIzquierda() }
-		keyboard.right().onPressDo { froggi.moverDerecha() }
+		keyboard.up().onPressDo { froggi.mover(arriba) }
+		keyboard.down().onPressDo { froggi.mover(abajo) }
+		keyboard.left().onPressDo { froggi.mover(izquierda) }
+		keyboard.right().onPressDo { froggi.mover(derecha) }
 		game.onCollideDo(froggi, { objeto => objeto.colision(froggi) })
 	}
 
