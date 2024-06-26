@@ -87,6 +87,7 @@ object configuracionJuego {
         froggi.position(game.at(9 , 0))
         froggi.vida(5)
         froggi.puntos(0)
+        froggi.cantidadDeVecesGanadas(0)
         configuracionPantallas.cargarPantalla(_pantalla)
     }
 }
