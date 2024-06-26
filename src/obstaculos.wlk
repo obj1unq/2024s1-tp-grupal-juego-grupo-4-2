@@ -54,7 +54,7 @@ class Obstaculo {
 class Tronco inherits Obstaculo {
 
 	override method image() {
-		return "tronco.png"
+		return "tronco2.png"
 	}
 
 	override method colision(personaje) {
@@ -70,7 +70,7 @@ class Tronco inherits Obstaculo {
 class TroncoInvertido inherits Tronco {
 
 	override method image() {
-		return "tronco.png"
+		return "tronco2.png"
 	}
 
 

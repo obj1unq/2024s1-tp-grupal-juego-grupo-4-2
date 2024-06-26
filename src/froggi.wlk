@@ -6,13 +6,15 @@ import randomizer.*
 import config.*
 
 class Froggi {
+
 	const cordDelAgua = 6
-    var property position = game.origin()
-    var property estado = vivo
-    var property vida = 7
+    var property position = game.at(9 , 0)
+    var property estado = vivo // Borramos o dejamos los estados? (ya no se usan, solo para la img)
+    var property vida = 5
+
     var property puntos = 0
-	  var cantidadDeVecesGanadas = 0
-	  var property movimiento = new Libre(position = game.at(0, 0))
+	var cantidadDeVecesGanadas = 0
+	var property movimiento = new Libre(position = game.at(9, 0))
 
 	method position(_position) {
 		movimiento.position(_position)
@@ -50,7 +52,7 @@ class Froggi {
 
 	method estoyMuerto() {
 		if (self.vida() <= 0) {
-			self.terminarJuego()
+			configuracionJuego.terminarJuego(pantallaMuerte)
 		}
 	}
 
@@ -81,16 +83,10 @@ class Froggi {
 	method estoySobreElAgua(){
 		if(game.colliders(self).isEmpty() and self.position().y() > cordDelAgua ){ // poner parametro con el 6
 			self.quitarVida(1)
-			self.position(game.origin())
+			self.position(game.at(9 , 0))
 		}
 	}
 
-   method terminarJuego() {
-        self.position(game.origin())
-        self.vida(7)
-        self.puntos(0)
-        configuracionPantallas.pantallaMuerte()
-    }
 
 }
 
@@ -138,4 +134,3 @@ object muerto {
 	}
 
 }
-
