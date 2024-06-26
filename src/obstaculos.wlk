@@ -163,7 +163,7 @@ object spawnerDeObstaculo {
 		self.inicializarVehiculo(tronco)
 	}
 
-method autoFactory(){
+	method autoFactory(){
 		const auto = new Auto( velocidad = 600 ,position= game.at(0, 3)  , autos = ["auto1.png" , "auto3.png"].anyOne())
 		self.inicializarVehiculo(auto)
 //		return auto

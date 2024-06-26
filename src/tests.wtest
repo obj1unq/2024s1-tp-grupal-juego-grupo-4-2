@@ -6,73 +6,145 @@ import consumibles.*
 import MetaParaVictoria.*
 import wollok.game.*
 
+describe "personaje" {
 
-
-
-describe "personaje"{
-    //PERSONAJE
-    const froggi = new Froggi(vida = 4)
-    const tronco = new Tronco(velocidad = 800 , position = game.at(7 , 7))
-	const auto1 = new Auto(velocidad = 300 , position = game.at(2,2) , autos = ["auto1.png" , "auto3.png"].anyOne())
-	const moto = new Moto (velocidad = 300,  position= game.at(3,3))
-	const camion = new Camion (velocidad = 900,  position= game.at(1,1) , camiones = ["camion-verde.png" , "camion-rojo.png"].anyOne())
+	// PERSONAJE
+	// const froggi = new Froggi(vida = 4)
+	const tronco = new Tronco(velocidad = 800, position = game.at(7, 7))
+	const auto1 = new Auto(velocidad = 300, position = game.at(2, 2), autos = [ "auto1.png", "auto3.png" ].anyOne())
+	const moto = new Moto(velocidad = 300, position = game.at(3, 3))
+	const camion = new Camion(velocidad = 900, position = game.at(1, 1), camiones = [ "camion-verde.png", "camion-rojo.png" ].anyOne())
 	const banana = new Banana()
 	const uva = new Uva()
 	const manzana = new Manzana()
+	const nenufar = new Nenufar(position = game.at(0, 0))
+	const mosca = new Mosca()
+	const mosquito = new Mosquito()
+
+	test "froggi COLISIONA CON TRONCO y no quita vida" {
+		game.addVisual(froggi)
+		froggi.position(game.at(7, 7))
+		game.addVisual(tronco)
+		froggi.estoySobreElAgua()
+		assert.equals(5, froggi.vida())
+	}
+
+	test "froggi COLISIONA CON EL AGUA y quita 1 vida" {
+		game.addVisual(froggi)
+		froggi.position(game.at(8, 8))
+		froggi.estoySobreElAgua()
+		game.addVisual(tronco)
+		assert.equals(4, froggi.vida())
+	}
+
+	test "froggi COLISIONA CON MOTO y quita 1 vida" {
+		froggi.position(game.at(3, 3))
+		moto.colision(froggi)
+		assert.equals(4, froggi.vida())
+	}
+
+	test "froggi COLISIONA CON AUTO y quita 2 vidas" {
+		game.addVisual(froggi)
+		auto1.colision(froggi)
+		assert.equals(3, froggi.vida())
+	}
+
+	test "froggi COLISIONA CON CAMION, LO EMPUJA UNA CELDA HACIA ABAJO y quita 3 vidas" {
+		game.addVisual(froggi)
+		froggi.position(game.at(2, 2))
+		camion.colision(froggi)
+		assert.equals(game.at(2, 1), froggi.position())
+		assert.equals(2, froggi.vida())
+	}
+
+	test "Cuando froggi muere sus puntos, posicion y cantidad de victorias se resetean y se activa pantalla de muerte" {
+		game.addVisual(froggi)
+		game.addVisual(moto)
+		froggi.position(game.at(5, 0))
+		froggi.vida(1)
+		froggi.puntos(500)
+		froggi.cantidadDeVecesGanadas(1)
+		moto.colision(froggi)
+		assert.equals(game.at(9, 0), froggi.position())
+		assert.equals(5, froggi.vida())
+		assert.equals(0, froggi.puntos())
+		assert.equals(0, froggi.cantidadDeVecesGanadas())
+		assert.that(game.hasVisual(pantallaMuerte))
+	}
 	
-	
-	
-   test "COLISIONA CON TRONCO" {
-   	game.addVisual(froggi)
-   	froggi.position(game.at(7,7))
-   	game.addVisual(tronco)
-   	froggi.estoySobreElAgua()
-	assert.equals(4 , froggi.vida())
-   }
-   test "COLISIONA CON EL AGUA" {
-   	game.addVisual(froggi)
-   	froggi.position(game.at(8,8))
-   	froggi.estoySobreElAgua()
-   	game.addVisual(tronco)
-	assert.equals(3 , froggi.vida())
-   }
-   test "COLISIONA CON MOTO" {
-	froggi.position(game.at(3,3))
-	moto.colision(froggi)
-	assert.equals(3 , froggi.vida())
-   }
-   test "COLISIONA CON AUTO" {
-   	game.addVisual(froggi)
-   	auto1.colision(froggi)
-	assert.equals(2 , froggi.vida())
-   }
-   test "COLISIONA CON CAMION Y LO EMPUJA UNA CELDA HACIA ABAJO" {
-	game.addVisual(froggi)
-	froggi.position(game.at(2,2))
-	camion.colision(froggi)
-	assert.equals(game.at(2 , 1), froggi.position())
-	assert.equals(1 , froggi.vida())
-   }
-   
-   test "Agregado de puntos con UVA"{
-   	game.addVisual(froggi)
-   	game.addVisual(uva)
-   	assert.equals(0 , froggi.puntos())
-   	uva.colision(froggi)
-   	assert.equals(200 , froggi.puntos())
-   }
-   test "Agregado de puntos con MANZANA"{
-	game.addVisual(froggi)
-	game.addVisual(manzana)
-	assert.equals(0 , froggi.puntos())
-	manzana.colision(froggi)
-	assert.equals(100 , froggi.puntos())   	
-   }   
-   test "Agregado de puntos con BANANA"{
-   	game.addVisual(froggi)
-   	game.addVisual(banana)
-   	assert.equals(0 , froggi.puntos())
-   	banana.colision(froggi)
-   	assert.equals(300 , froggi.puntos())
-   }   
+	test "Cuando froggi gana sus puntos, posicion y cantidad de victorias se resetean y se activa pantalla de victoria" {
+		game.addVisual(froggi)
+		game.addVisual(nenufar)
+		froggi.position(game.at(5, 0))
+		froggi.vida(1)
+		froggi.puntos(500)
+		froggi.cantidadDeVecesGanadas(2)
+		nenufar.colision(froggi)
+		assert.equals(game.at(9, 0), froggi.position())
+		assert.equals(5, froggi.vida())
+		assert.equals(0, froggi.puntos())
+		assert.equals(0, froggi.cantidadDeVecesGanadas())
+		assert.that(game.hasVisual(pantallaVictoria))
+	}
+
+	test "Agregado de puntos con UVA" {
+		game.addVisual(froggi)
+		game.addVisual(uva)
+		assert.equals(0, froggi.puntos())
+		uva.colision(froggi)
+		assert.equals(200, froggi.puntos())
+	}
+
+	test "Agregado de puntos con MANZANA" {
+		game.addVisual(froggi)
+		game.addVisual(manzana)
+		assert.equals(0, froggi.puntos())
+		manzana.colision(froggi)
+		assert.equals(100, froggi.puntos())
+	}
+
+	test "Agregado de puntos con BANANA" {
+		game.addVisual(froggi)
+		game.addVisual(banana)
+		assert.equals(0, froggi.puntos())
+		banana.colision(froggi)
+		assert.equals(300, froggi.puntos())
+	}
+
+	test "El nenufar cambia la cantidad de victorias de froggi" {
+		game.addVisual(froggi)
+		game.addVisual(nenufar)
+		nenufar.actualizarVictoria(froggi)
+		assert.equals(1, froggi.cantidadDeVecesGanadas())
+	}
+
+	test "El nenufar se borra y se agrega el objeto de rana ganadora cuando froggi colisiona al nenufar" {
+		game.addVisual(froggi)
+		game.addVisual(nenufar)
+		nenufar.colision(froggi)
+		assert.notThat(game.hasVisual(nenufar))
+	}
+
+	test "Cuando froggi colisiona con un mosquito froggi cambia de lugar" {
+		game.addVisual(froggi)
+		froggi.position(game.at(9, 7))
+		game.addVisual(mosquito)
+		mosquito.colision(froggi)
+		assert.equals(game.at(9, 5), froggi.position())
+	}
+
+	test "Cuando froggi colision con mosca todos los objetos que se mueven se borran" {
+		game.addVisual(froggi)
+		game.addVisual(mosca)
+		spawnerDeObstaculo.personaje(froggi)
+		spawnerDeObstaculo.autoFactory()
+		spawnerDeObstaculo.camionFactory()
+		spawnerDeObstaculo.camionRapidoFactory()
+		spawnerDeObstaculo.init()
+		assert.notThat(spawnerDeObstaculo.vehiculos().isEmpty())
+		mosca.colision(froggi)
+		assert.that(spawnerDeObstaculo.vehiculos().isEmpty())
+	}
+
 }
+
