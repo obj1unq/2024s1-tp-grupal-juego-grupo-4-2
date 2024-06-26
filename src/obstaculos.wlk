@@ -147,6 +147,8 @@ class Auto inherits Obstaculo {
 
 object spawnerDeObstaculo {
 	
+	const cordDelAgua = 6
+	
 	var property personaje = null 
 
 	const property vehiculos = []
@@ -154,9 +156,9 @@ object spawnerDeObstaculo {
 	method troncoFactory(pos_y) {
 		var tronco
 		if (pos_y.even()) {
-			tronco = new Tronco(velocidad = 800, position = game.at(0, pos_y + 6))
+			tronco = new Tronco(velocidad = 800, position = game.at(0, pos_y + cordDelAgua))
 		} else {
-			tronco = new TroncoInvertido(velocidad = 800, position = game.at(game.width() - 1, pos_y + 6))
+			tronco = new TroncoInvertido(velocidad = 800, position = game.at(game.width() - 1, pos_y + cordDelAgua))
 		}
 		self.inicializarVehiculo(tronco)
 	}

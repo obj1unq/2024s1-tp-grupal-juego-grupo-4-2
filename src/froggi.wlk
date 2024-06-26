@@ -6,9 +6,12 @@ import randomizer.*
 import config.*
 
 class Froggi {
+
+	const cordDelAgua = 6
     var property position = game.at(9 , 0)
     var property estado = vivo // Borramos o dejamos los estados? (ya no se usan, solo para la img)
     var property vida = 5
+
     var property puntos = 0
 	var cantidadDeVecesGanadas = 0
 	var property movimiento = new Libre(position = game.at(9, 0))
@@ -78,7 +81,7 @@ class Froggi {
 	}
 	
 	method estoySobreElAgua(){
-		if(game.colliders(self).isEmpty() and self.position().y() > 6 ){ // poner parametro con el 6
+		if(game.colliders(self).isEmpty() and self.position().y() > cordDelAgua ){ // poner parametro con el 6
 			self.quitarVida(1)
 			self.position(game.at(9 , 0))
 		}
