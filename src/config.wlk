@@ -4,12 +4,14 @@ import ui.*
 import obstaculos.*
 import consumibles.*
 import MetaParaVictoria.*
+import tienda.*
 
 const pantallaInicio = new Pantallas (position = game.origin(), image = "pantalla_inicio.png")
 const pantallaMuerte = new Pantallas (position = game.origin(), image = "pantalla_muerte.png")
 const pantallaControles = new Pantallas (position = game.at(5, 2), image = "pantalla_controles.png")
 const pantallaVictoria = new Pantallas (position = game.origin(), image = "pantalla_victoria.png")
 const froggi = new Froggi()
+const vidaExtra = new VidaExtra()
 
 class Pantallas {
 	var property position
@@ -67,6 +69,7 @@ object configuracionJuego {
 		keyboard.down().onPressDo { froggi.mover(abajo) }
 		keyboard.left().onPressDo { froggi.mover(izquierda) }
 		keyboard.right().onPressDo { froggi.mover(derecha) }
+		keyboard.z().onPressDo{vidaExtra.activar(froggi) }
 		game.onCollideDo(froggi, { objeto => objeto.colision(froggi) })
 	}
 
