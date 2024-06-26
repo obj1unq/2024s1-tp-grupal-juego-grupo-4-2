@@ -9,9 +9,7 @@ class Froggi {
 
 	const cordDelAgua = 6
     var property position = game.at(9 , 0)
-    var property estado = vivo // Borramos o dejamos los estados? (ya no se usan, solo para la img)
     var property vida = 5
-
     var property puntos = 0
 	var property cantidadDeVecesGanadas = 0
 	var property movimiento = new Libre(position = game.at(9, 0))
@@ -25,12 +23,11 @@ class Froggi {
 	}
 
 	method image() {
-		return "froggi-" + estado.image() + ".png"
+		return "froggi.png"
 	}
 
 	method quitarVida(cantidad) {
 		vida -= cantidad
-			// console.println(self.vida()) // DESPUES BORRAR, SOLO DE PRUEBA
 		self.estoyMuerto()
 	}
 
@@ -55,24 +52,18 @@ class Froggi {
 	method aumentarVecesGanadas() {
 		cantidadDeVecesGanadas += 1
 	}
-
-	method moverArriba() {
-		self.position(self.position().up(1))
-		self.estoySobreElAgua()
+	
+	method puedeMover(direccion) {
+		return direccion.posicionesValidas()
 	}
 
-	method moverAbajo() {
-		self.position(self.position().down(1))
-		self.estoySobreElAgua()
+	method validarMovimiento(direccion) {
+		if (not self.puedeMover(direccion)) {self.error("No puedo mover")}
 	}
-
-	method moverIzquierda() {
-		self.position(self.position().left(1))
-		self.estoySobreElAgua()
-	}
-
-	method moverDerecha() {
-		self.position(self.position().right(1))
+	
+	method mover(direccion) {
+		self.validarMovimiento(direccion)
+		self.position(direccion.siguiente(self.position()))
 		self.estoySobreElAgua()
 	}
 	
@@ -84,6 +75,45 @@ class Froggi {
 	}
 
 
+}
+
+object arriba {
+	method siguiente(position) {
+		return position.up(1)
+	}
+	
+	method posicionesValidas() {
+		return (froggi.position().y().between(0, game.height() - 2))
+	}
+}
+
+object abajo {
+	method siguiente(position) {
+		return position.down(1)
+	}
+	
+	method posicionesValidas() {
+		return (froggi.position().y().between(1, game.height() - 1))
+	}	
+}
+
+object izquierda {	
+	method siguiente(position) {
+		return position.left(1)
+	}
+	
+	method posicionesValidas() {
+		return (froggi.position().x().between(1, game.width() - 1))
+	}	
+}
+object derecha {	
+	method siguiente(position) {
+		return position.right(1)
+	}
+	
+	method posicionesValidas() {
+		return (froggi.position().x().between(0, game.width() - 2))
+	}	
 }
 
 class SobreTronco {
@@ -111,22 +141,6 @@ class Libre {
 	
 	method estoySobreTronco(){
 		return false
-	}
-
-}
-
-object vivo {
-
-	method image() {
-		return "vivo"
-	}
-
-}
-
-object muerto {
-
-	method image() {
-		return "muerto"
 	}
 
 }
