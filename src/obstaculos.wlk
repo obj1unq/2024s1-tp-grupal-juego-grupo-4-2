@@ -152,6 +152,7 @@ object spawnerDeObstaculo {
 	var property personaje = null 
 
 	const property vehiculos = []
+	const property troncos = []
 
 	method troncoFactory(pos_y) {
 		var tronco
@@ -160,7 +161,7 @@ object spawnerDeObstaculo {
 		} else {
 			tronco = new TroncoInvertido(velocidad = 800, position = game.at(game.width() - 1, pos_y + cordDelAgua))
 		}
-		self.inicializarVehiculo(tronco)
+		self.inicializarTroncos(tronco)
 	}
 
 	method autoFactory(){
@@ -193,7 +194,17 @@ object spawnerDeObstaculo {
 		vehiculos.add(vehiculo)
 		game.removeVisual(personaje)
 		game.addVisual(personaje) // Se utiliza este method para que el personaje siempre este por encima
+	}
 		
+	method inicializarTroncos(vehiculo) {
+		game.addVisual(vehiculo)
+		vehiculo.iniciarMovimiento()
+		troncos.add(vehiculo)
+		game.removeVisual(personaje)
+		game.addVisual(personaje) // Se utiliza este method para que el personaje siempre este por encima
+		
+	
+	
 	}
 	
 	method init() {
