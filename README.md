@@ -30,4 +30,4 @@
 
 - Universidad Nacional de Quilmes 2024
 - Versión de Wollok 3.0.0
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
+- Una vez terminado, no tenemos problemas en que el repositorio sea público
