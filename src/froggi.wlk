@@ -6,6 +6,7 @@ import randomizer.*
 import config.*
 
 class Froggi {
+	const cordDelAgua = 6
     var property position = game.origin()
     var property estado = vivo
     var property vida = 7
@@ -78,7 +79,7 @@ class Froggi {
 	}
 	
 	method estoySobreElAgua(){
-		if(game.colliders(self).isEmpty() and self.position().y() > 6 ){ // poner parametro con el 6
+		if(game.colliders(self).isEmpty() and self.position().y() > cordDelAgua ){ // poner parametro con el 6
 			self.quitarVida(1)
 			self.position(game.origin())
 		}
