@@ -13,7 +13,7 @@ class Froggi {
     var property vida = 5
 
     var property puntos = 0
-	var cantidadDeVecesGanadas = 0
+	var property cantidadDeVecesGanadas = 0
 	var property movimiento = new Libre(position = game.at(9, 0))
 
 	method position(_position) {
@@ -26,10 +26,6 @@ class Froggi {
 
 	method image() {
 		return "froggi-" + estado.image() + ".png"
-	}
-
-	method cantidadDeVecesGanadas() {
-		return cantidadDeVecesGanadas
 	}
 
 	method quitarVida(cantidad) {
