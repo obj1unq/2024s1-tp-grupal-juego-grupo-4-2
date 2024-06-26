@@ -14,6 +14,5 @@ program juego {
 	configuracionPantallas.cargarPantalla(pantallaInicio)
 	configuracionPantallas.configurarInicio()
 	game.start()
-	// ERROR MOSCA DESPUES DE REINICIAR
 }
 

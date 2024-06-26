@@ -145,6 +145,15 @@ describe "personaje" {
 		mosca.colision(froggi)
 		assert.that(spawnerDeObstaculo.vehiculos().isEmpty())
 	}
+	
+	test "Froggi activa vida extra" {
+        game.addVisual(froggi)
+        froggi.puntos(700)
+        assert.equals(5 ,froggi.vida())
+        vidaExtra.activar(froggi)
+        assert.equals(6 ,froggi.vida())
+        assert.equals(0 ,froggi.puntos())
+    }
 
 }
 

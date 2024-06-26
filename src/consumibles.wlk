@@ -77,7 +77,7 @@ class Insecto inherits Consumible {
 
 }
 
-class Mosquito inherits Insecto {		//Solo se crea 1 en la escena actual
+class Mosquito inherits Insecto {		
 
 	method image() {
 		return "mosquito.png"
@@ -120,8 +120,6 @@ object consumiblesManager {
 		if (frutas.size() < 6) {
 			const fruta = [ {(new Manzana())}, {(new Uva())}, {(new Banana())} ].anyOne().apply()
 			self.agregarConsumible(fruta, frutas)
-			//console.println(frutas)
-		// frutas.add([self.creador((new Manzana())), self.creador((new Uva())) , (new Banana())].anyOne())
 		}
 	}
 

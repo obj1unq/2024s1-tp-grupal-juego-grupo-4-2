@@ -68,7 +68,7 @@ class Froggi {
 	}
 	
 	method estoySobreElAgua(){
-		if(game.colliders(self).isEmpty() and self.position().y() > cordDelAgua ){ // poner parametro con el 6
+		if(game.colliders(self).isEmpty() and self.position().y() > cordDelAgua ){
 			self.quitarVida(1)
 			self.position(game.at(9 , 0))
 		}
