@@ -7,11 +7,11 @@ import config.*
 
 class Froggi {
     var property position = game.origin()
-    var property estado = vivo
+    var property estado = vivo // Borramos o dejamos los estados? (ya no se usan, solo para la img)
     var property vida = 7
     var property puntos = 0
-	  var cantidadDeVecesGanadas = 0
-	  var property movimiento = new Libre(position = game.at(0, 0))
+	var cantidadDeVecesGanadas = 0
+	var property movimiento = new Libre(position = game.at(0, 0))
 
 	method position(_position) {
 		movimiento.position(_position)
@@ -49,7 +49,7 @@ class Froggi {
 
 	method estoyMuerto() {
 		if (self.vida() <= 0) {
-			self.terminarJuego()
+			configuracionJuego.terminarJuego(pantallaMuerte)
 		}
 	}
 
@@ -84,12 +84,6 @@ class Froggi {
 		}
 	}
 
-   method terminarJuego() {
-        self.position(game.origin())
-        self.vida(7)
-        self.puntos(0)
-        configuracionPantallas.pantallaMuerte()
-    }
 
 }
 
@@ -137,4 +131,3 @@ object muerto {
 	}
 
 }
-

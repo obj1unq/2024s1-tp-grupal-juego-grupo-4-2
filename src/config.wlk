@@ -8,6 +8,8 @@ import MetaParaVictoria.*
 const pantallaInicio = new Pantallas (position = game.origin(), image = "pantalla_inicio.png")
 const pantallaMuerte = new Pantallas (position = game.origin(), image = "pantalla_muerte.png")
 const pantallaControles = new Pantallas (position = game.at(5, 2), image = "pantalla_controles.png")
+const pantallaVictoria = new Pantallas (position = game.origin(), image = "pantalla_victoria.png")
+const froggi = new Froggi()
 
 class Pantallas {
 	var property position
@@ -25,16 +27,10 @@ object configuracionPantallas {
 		}
 	}
 	
-	method cargarPantallaInicio(){
-		game.boardGround("superficie.png")
-		game.addVisual(pantallaInicio)	
-	}
-
-	
 	method configurarJuego(){
 		// Quita la pantalla de inicio e inicia el juego con su configuracion
 		game.clear()
-		game.boardGround("superficie.png")
+		game.boardGround("superficie2.png")
 		juegoEnMarcha = true
 		configuracionJuego.agregarFroggi()
 		configuracionJuego.agregarUI()
@@ -47,18 +43,22 @@ object configuracionPantallas {
 		// agrupar los nenufares en un init
 	}
 	
-	method pantallaMuerte() {
+	method cargarPantalla(_pantalla) {
+		
 		game.clear()
-		game.boardGround("superficie.png")
-		game.addVisual(pantallaMuerte)
+		game.boardGround("superficie2.png")
+		game.addVisual(_pantalla)
 		juegoEnMarcha = false
-		keyboard.r().onPressDo{if (not juegoEnMarcha) {self.configurarJuego()}}
+		keyboard.m().onPressDo{if (not juegoEnMarcha && not game.hasVisual(pantallaInicio)) {game.addVisual(pantallaInicio)
+														self.configurarInicio()
+														game.removeVisual(_pantalla)
+								}}
+		keyboard.r().onPressDo{if (not juegoEnMarcha && not game.hasVisual(pantallaInicio)) {self.configurarJuego()}}
 	}
-	
 }
 
 object configuracionJuego {
-	const froggi = new Froggi()
+	
 	
 	method agregarFroggi() {
 		game.addVisual(froggi)
@@ -82,8 +82,11 @@ object configuracionJuego {
 		game.onTick(3000, "CREAR FRUTA", { consumiblesManager.crearFruta() })
 		game.onTick(5000, "CREAR INSECTO", { consumiblesManager.crearInsecto() })
 	}
+	
+	method terminarJuego(_pantalla) {
+        froggi.position(game.origin())
+        froggi.vida(7)
+        froggi.puntos(0)
+        configuracionPantallas.cargarPantalla(_pantalla)
+    }
 }
-
-
-
-

@@ -11,10 +11,9 @@ program juego {
 	game.width(20)
 	game.height(13)
 	game.title("Froggy (Wollok Edition)")
+	configuracionPantallas.cargarPantalla(pantallaInicio)
 	configuracionPantallas.configurarInicio()
-	configuracionPantallas.cargarPantallaInicio()
 	game.start()
 	// ERROR MOSCA DESPUES DE REINICIAR
 }
-
 
