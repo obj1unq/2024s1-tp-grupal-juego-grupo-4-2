@@ -85,7 +85,7 @@ class Mosquito inherits Insecto {		//Solo se crea 1 en la escena actual
 
 	override method aplicarComportamiento(personaje) {
 		//Te teletransporta a la próxima safe zone
-		personaje.position(game.at(5 , 5))
+		personaje.position(game.at(9 , 5))
 	}
 
 }
@@ -109,7 +109,7 @@ object consumiblesManager {
 	const property frutas = []
 
 	method crearInsecto() {
-		if (insectos.size() < 5) {
+		if (insectos.size() < 3) {
 			const insecto = [ {new Mosquito()}, {new Mosca()} ].anyOne().apply()
 			self.agregarConsumible(insecto, insectos)
 		// console.println(insectos)
@@ -117,7 +117,7 @@ object consumiblesManager {
 	}
 
 	method crearFruta() {
-		if (frutas.size() < 9) {
+		if (frutas.size() < 6) {
 			const fruta = [ {(new Manzana())}, {(new Uva())}, {(new Banana())} ].anyOne().apply()
 			self.agregarConsumible(fruta, frutas)
 			//console.println(frutas)
@@ -131,4 +131,3 @@ object consumiblesManager {
 	}
 
 }
-

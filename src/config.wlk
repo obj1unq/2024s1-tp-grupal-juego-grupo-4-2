@@ -84,8 +84,8 @@ object configuracionJuego {
 	}
 	
 	method terminarJuego(_pantalla) {
-        froggi.position(game.origin())
-        froggi.vida(7)
+        froggi.position(game.at(9 , 0))
+        froggi.vida(5)
         froggi.puntos(0)
         configuracionPantallas.cargarPantalla(_pantalla)
     }
