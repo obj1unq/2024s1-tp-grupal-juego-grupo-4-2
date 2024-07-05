@@ -81,7 +81,8 @@ object configuracionJuego {
 		game.addVisual(vidasUI)
 	}
 	
-	method agregarItems() {
+	method agregarItems(){
+		consumiblesManager.limpiarConsumibles()
 		game.onTick(3000, "CREAR FRUTA", { consumiblesManager.crearFruta() })
 		game.onTick(5000, "CREAR INSECTO", { consumiblesManager.crearInsecto() })
 	}

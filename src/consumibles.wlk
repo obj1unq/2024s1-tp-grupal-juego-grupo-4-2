@@ -108,6 +108,11 @@ object consumiblesManager {
 	const property insectos = []
 	const property frutas = []
 
+	method limpiarConsumibles(){
+		insectos.clear()
+		frutas.clear()
+	}
+
 	method crearInsecto() {
 		if (insectos.size() < 3) {
 			const insecto = [ {new Mosquito()}, {new Mosca()} ].anyOne().apply()
