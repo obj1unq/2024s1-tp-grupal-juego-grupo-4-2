@@ -82,6 +82,7 @@ object configuracionJuego {
 	}
 	
 	method agregarItems() {
+		consumiblesManager.clear() //Al restart no se bugea
 		game.onTick(3000, "CREAR FRUTA", { consumiblesManager.crearFruta() })
 		game.onTick(5000, "CREAR INSECTO", { consumiblesManager.crearInsecto() })
 	}
